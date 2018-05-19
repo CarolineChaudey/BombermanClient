@@ -19,7 +19,7 @@
 
 // Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
-
+//This is the main class
 int main(int, char const**)
 {
     // Create the main window
