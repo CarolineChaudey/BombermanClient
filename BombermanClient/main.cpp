@@ -14,6 +14,14 @@
 // function `resourcePath()` from ResourcePath.hpp
 //
 
+
+//Main s'occupe de lancer menu
+//Menu s'occupe de lancer game
+//Game s'occupe de lancer une map avec son manager
+//Le manager fait l'échange entre la map et le réseau
+//il y'a un manager pour chaque chose ( menu, options, game ...)
+
+
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -23,7 +31,7 @@
 int main(int, char const**)
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(1200, 1000), "SFML window");
 
     // Set the Icon
     sf::Image icon;

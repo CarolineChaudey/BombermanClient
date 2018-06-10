@@ -16,6 +16,7 @@
 		E406F99420B0A6D700633957 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99320B0A6D700633957 /* Map.cpp */; };
 		E406F99720B0A9B100633957 /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99520B0A9B100633957 /* Bomb.cpp */; };
 		E406F99A20B0AAFD00633957 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99820B0AAFD00633957 /* Player.cpp */; };
+		E426533C20C983E50088624E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E426533A20C983E50088624E /* Game.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		E406F99620B0A9B100633957 /* Bomb.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bomb.hpp; sourceTree = "<group>"; };
 		E406F99820B0AAFD00633957 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		E406F99920B0AAFD00633957 /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		E426533A20C983E50088624E /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		E426533B20C983E50088624E /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +69,15 @@
 		82D1D97B20B04C3C00136978 /* BombermanClient */ = {
 			isa = PBXGroup;
 			children = (
+				E426533920C983B30088624E /* Engines */,
+				E426533720C97C110088624E /* Menus */,
+				E426533520C97A510088624E /* Managers */,
+				E426533420C97A460088624E /* Services */,
+				E426533320C95E0B0088624E /* Utils */,
 				E406F99120B0A30400633957 /* Models */,
-				82D1D97E20B04C3C00136978 /* ResourcePath.mm */,
-				82D1D98020B04C3C00136978 /* ResourcePath.hpp */,
 				82D1D98120B04C3C00136978 /* main.cpp */,
+				82D1D98020B04C3C00136978 /* ResourcePath.hpp */,
+				82D1D97E20B04C3C00136978 /* ResourcePath.mm */,
 				82D1D98320B04C3C00136978 /* Resources */,
 				82D1D97C20B04C3C00136978 /* Supporting Files */,
 			);
@@ -87,6 +95,11 @@
 		82D1D98320B04C3C00136978 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E426533220C9555F0088624E /* Musics */,
+				E426533120C955540088624E /* Sounds */,
+				E426533020C9554B0088624E /* Sprites */,
+				E426532F20C955430088624E /* Tilesets */,
+				E426532E20C954B80088624E /* Maps */,
 				82D1D98420B04C3C00136978 /* cute_image.jpg */,
 				82D1D98620B04C3C00136978 /* nice_music.ogg */,
 				82D1D98820B04C3C00136978 /* sansation.ttf */,
@@ -106,6 +119,78 @@
 				E406F99920B0AAFD00633957 /* Player.hpp */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E426532E20C954B80088624E /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		E426532F20C955430088624E /* Tilesets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tilesets;
+			sourceTree = "<group>";
+		};
+		E426533020C9554B0088624E /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
+		E426533120C955540088624E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		E426533220C9555F0088624E /* Musics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Musics;
+			sourceTree = "<group>";
+		};
+		E426533320C95E0B0088624E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		E426533420C97A460088624E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		E426533520C97A510088624E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		E426533720C97C110088624E /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Menus;
+			sourceTree = "<group>";
+		};
+		E426533920C983B30088624E /* Engines */ = {
+			isa = PBXGroup;
+			children = (
+				E426533A20C983E50088624E /* Game.cpp */,
+				E426533B20C983E50088624E /* Game.hpp */,
+			);
+			name = Engines;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +283,7 @@
 				E406F99420B0A6D700633957 /* Map.cpp in Sources */,
 				E406F99720B0A9B100633957 /* Bomb.cpp in Sources */,
 				82D1D98220B04C3C00136978 /* main.cpp in Sources */,
+				E426533C20C983E50088624E /* Game.cpp in Sources */,
 				82D1D97F20B04C3C00136978 /* ResourcePath.mm in Sources */,
 				E406F99A20B0AAFD00633957 /* Player.cpp in Sources */,
 			);
