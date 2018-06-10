@@ -1,0 +1,25 @@
+//
+//  GameServerService.hpp
+//  BombermanClient
+//
+//  Created by Caroline Chaudey on 10/06/2018.
+//  Copyright © 2018 Caroline Chaudey. All rights reserved.
+//
+
+#ifndef GameServerService_hpp
+#define GameServerService_hpp
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <stdio.h>
+#include <string.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+
+const char serverAddr[15] = "127.0.0.1";
+const int serverPort = 8081;
+
+void getRooms(char* recvline);
+
+#endif /* GameServerService_hpp */
