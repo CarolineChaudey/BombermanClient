@@ -27,10 +27,11 @@
 
 // Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
-//#include "GameServerService.hpp"
+#include "GameServerService.hpp"
 
 void getRoomsFromServer() {
     char recvline[100];
+    getRooms(recvline);
     printf("%s\n", recvline);
 }
 
@@ -47,14 +48,6 @@ int main(int, char const**)
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-    // Load a sprite to display
-    /*
-    sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
-        return EXIT_FAILURE;
-    }
-    sf::Sprite sprite(texture);
-     */
     // Create a graphical text to display
     sf::Font font;
     if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
@@ -83,7 +76,6 @@ int main(int, char const**)
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-
             // Escape pressed: exit
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.close();
@@ -92,13 +84,8 @@ int main(int, char const**)
 
         // Clear screen
         window.clear();
-
-        // Draw the sprite
-        //window.draw(sprite);
-
         // Draw the string
         window.draw(text);
-
         // Update the window
         window.display();
     }

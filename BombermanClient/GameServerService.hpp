@@ -17,9 +17,9 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-char serverAddr[15] = "127.0.0.1";
-int serverPort = 8081;
+const char serverAddr[15] = "127.0.0.1";
+const int serverPort = 8081;
 
-char* getRooms(char* recvline);
+void getRooms(char* recvline);
 
 #endif /* GameServerService_hpp */
