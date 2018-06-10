@@ -30,7 +30,7 @@
 #include "GameServerService.hpp"
 
 void getRoomsFromServer() {
-    char recvline[100];
+    char recvline[100] = "";
     getRooms(recvline);
     printf("%s\n", recvline);
 }
@@ -64,6 +64,10 @@ int main(int, char const**)
 
     // Play the music
     music.play();
+    
+    // test function getRoomsFromServer
+    // à déplacer pour en extraire les infos et lancer la page des rooms
+    getRoomsFromServer();
 
     // Start the game loop
     while (window.isOpen())
