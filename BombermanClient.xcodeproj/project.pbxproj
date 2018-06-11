@@ -17,6 +17,7 @@
 		E406F99420B0A6D700633957 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99320B0A6D700633957 /* Map.cpp */; };
 		E406F99720B0A9B100633957 /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99520B0A9B100633957 /* Bomb.cpp */; };
 		E406F99A20B0AAFD00633957 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99820B0AAFD00633957 /* Player.cpp */; };
+		E423497120CE9A26005DE9FB /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E423496F20CE9A26005DE9FB /* LevelManager.cpp */; };
 		E426533C20C983E50088624E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E426533A20C983E50088624E /* Game.cpp */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,8 @@
 		E406F99620B0A9B100633957 /* Bomb.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bomb.hpp; sourceTree = "<group>"; };
 		E406F99820B0AAFD00633957 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		E406F99920B0AAFD00633957 /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		E423496F20CE9A26005DE9FB /* LevelManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LevelManager.cpp; sourceTree = "<group>"; };
+		E423497020CE9A26005DE9FB /* LevelManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LevelManager.hpp; sourceTree = "<group>"; };
 		E426533A20C983E50088624E /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		E426533B20C983E50088624E /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +181,8 @@
 		E426533520C97A510088624E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E423496F20CE9A26005DE9FB /* LevelManager.cpp */,
+				E423497020CE9A26005DE9FB /* LevelManager.hpp */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				E406F99420B0A6D700633957 /* Map.cpp in Sources */,
 				E406F99720B0A9B100633957 /* Bomb.cpp in Sources */,
 				82D1D98220B04C3C00136978 /* main.cpp in Sources */,
+				E423497120CE9A26005DE9FB /* LevelManager.cpp in Sources */,
 				E426533C20C983E50088624E /* Game.cpp in Sources */,
 				82D1D97F20B04C3C00136978 /* ResourcePath.mm in Sources */,
 				E406F99A20B0AAFD00633957 /* Player.cpp in Sources */,
