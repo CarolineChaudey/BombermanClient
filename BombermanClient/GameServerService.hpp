@@ -17,9 +17,12 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-const char serverAddr[15] = "127.0.0.1";
-const int serverPort = 8081;
-
-void getRooms(char* recvline);
+class GameServerService {
+public:
+    void getRooms(char* recvline);
+private:
+    char serverAddr[15] = "127.0.0.1";
+    int serverPort = 8081;
+};
 
 #endif /* GameServerService_hpp */

@@ -30,8 +30,10 @@
 #include "GameServerService.hpp"
 
 void getRoomsFromServer() {
+    GameServerService* gameServerService = new GameServerService();
     char recvline[100] = "";
-    getRooms(recvline);
+    //getRooms(recvline);
+    gameServerService->getRooms(recvline);
     printf("%s\n", recvline);
 }
 
