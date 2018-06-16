@@ -28,6 +28,8 @@
 // Here is a small helper for you! Have a look.
 #include "ResourcePath.hpp"
 #include "GameServerService.hpp"
+#include "LevelManager.hpp"
+#include "Map.hpp"
 
 void getRoomsFromServer() {
     GameServerService* gameServerService = new GameServerService();
@@ -40,6 +42,14 @@ void getRoomsFromServer() {
 //This is the main class
 int main(int, char const**)
 {
+    Map myMap = *new Map();
+    myMap.setTilesetTexturePath(resourcePath() + "bonbeurremanTileset.png");
+    
+    LevelManager lManager = *new LevelManager(myMap);
+    lManager.loadMap(resourcePath() + "BonBeurreMap1.txt");
+    
+    
+    
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(1200, 1000), "Bon beurre man");
 

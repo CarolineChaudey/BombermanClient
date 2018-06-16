@@ -23,7 +23,8 @@ public:
     void loadMap(std::string filename);
     void drawMap(int layer, sf::RenderWindow &window);
 
-   // void testDefilement(void);
+    void changeMapSize(int sizeX, int sizeY);
+    
     
     
 private:

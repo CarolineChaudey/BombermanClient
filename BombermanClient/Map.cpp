@@ -5,9 +5,9 @@ Map::Map() {
     tileset_id = 0;
     level_id = 0;
     
-    layer_1 = NULL;
-    layer_2 = NULL;
-    layer_3 = NULL;
+    layer_1 = *new vector <vector <int>>;
+    layer_2 = *new vector <vector <int>>;
+    layer_3 = *new vector <vector <int>>;
     
     start_x = start_y = 0;
     max_x = max_y = 0;
@@ -22,14 +22,13 @@ Map::Map(int size_x, int size_y) {
     tileset_id = 0;
     level_id = 0;
     
-    layer_1 = NULL;
-    layer_2 = NULL;
-    layer_3 = NULL;
     
     start_x = start_y = 0;
     max_x = max_y = 0;
     this->size_x = size_x;
     this->size_y = size_y;
+    
+    initLayers();
     
     tileset_texture = *new Texture();
     tileset = *new Sprite();
@@ -44,15 +43,15 @@ int Map::getLevelId() const {
     return this->level_id;
 }
 
-int **Map::getLayer1() {
+vector <vector <int>> Map::getLayer1() {
     return this->layer_1;
 }
 
-int **Map::getLayer2() {
+vector <vector <int>> Map::getLayer2() {
     return this->layer_2;
 }
 
-int **Map::getLayer3() {
+vector <vector <int>> Map::getLayer3() {
     return this->layer_3;
 }
 
@@ -101,15 +100,15 @@ void Map::setLevelId(int id) {
     this->level_id = id;
 }
 
-void Map::setLayer1(int **layer) {
+void Map::setLayer1(vector <vector <int>> layer) {
     this->layer_1 = layer;
 }
 
-void Map::setLayer2(int **layer) {
+void Map::setLayer2(vector <vector <int>> layer) {
     this->layer_2 = layer;
 }
 
-void Map::setLayer3(int **layer) {
+void Map::setLayer3(vector <vector <int>> layer) {
     this->layer_3 = layer;
 }
 
@@ -137,14 +136,14 @@ void Map::setMaxY(int maxY) {
     this->max_y = maxY;
 }
 
-void Map::setElementOnMap(LAYERS layer, int x, int y, int value) {
+void Map::setElementOnMap(LAYERS layer, int y, int x, int value) {
     switch(layer){
         case LAYERS::LAYER1:
-            this->layer_1[x][y] = value;
+            layer_1[x][y] = value;
         case LAYERS::LAYER2:
-            this->layer_2[x][y] = value;
+            layer_2[x][y] = value;
         case LAYERS::LAYER3:
-            this->layer_3[x][y] = value;
+            layer_3[x][y] = value;
         default:
             return;
     };
@@ -157,4 +156,64 @@ sf::Texture Map::getTilesetTexture() const {
 sf::Sprite Map::getTileset() const { 
     return this->tileset;
 }
+
+void Map::setTilesetTexture(sf::Texture texture) { 
+    this->tileset_texture = texture;
+}
+
+void Map::setTileset(sf::Sprite sprite) { 
+    this->tileset = sprite;
+}
+
+void Map::setTilesetTexturePath(std::string path) { 
+    this->tileset_texture_path = path;
+}
+
+void Map::setTilesetPath(std::string path) { 
+    this->tileset_path = path;
+}
+
+std::string Map::getTilesetTexturePath() const { 
+    return this->tileset_texture_path;
+}
+
+std::string Map::getTilesetPath() const { 
+    return this->tileset_path;
+}
+
+void Map::initLayers() {
+    
+    for(int i = 0; i < this->size_x; i++)
+    {
+        layer_1.push_back(*new vector<int>(this->size_y));
+        layer_2.push_back(*new vector<int>(this->size_y));
+        layer_3.push_back(*new vector<int>(this->size_y));
+        
+        for(int j = 0; j < this->size_y; j++)
+        {
+            layer_1[i][j] = layer_2[i][j] = layer_3[i][j] = 0;
+        }
+    }
+}
+
+void Map::printLayers() { 
+    for(int i = 0; i < this->size_x; i++)
+    {
+        for(int j = 0; j < this->size_y; j++)
+        {
+            cout << layer_1[i][j];
+            cout << " ";
+            cout << layer_2[i][j];
+            cout << " ";
+            cout << layer_3[i][j];
+            cout << " ";
+        }
+        cout << endl;
+    }
+}
+
+
+
+
+
 

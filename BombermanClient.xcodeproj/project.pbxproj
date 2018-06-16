@@ -19,6 +19,8 @@
 		E406F99A20B0AAFD00633957 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99820B0AAFD00633957 /* Player.cpp */; };
 		E423497120CE9A26005DE9FB /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E423496F20CE9A26005DE9FB /* LevelManager.cpp */; };
 		E426533C20C983E50088624E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E426533A20C983E50088624E /* Game.cpp */; };
+		E4D0BCA220D3CE1200B26378 /* BonBeurreMap1.txt in Resources */ = {isa = PBXBuildFile; fileRef = E4D0BCA120D3CE1200B26378 /* BonBeurreMap1.txt */; };
+		E4D0BCA420D3D20D00B26378 /* bonbeurremanTileset.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D0BCA320D3D20D00B26378 /* bonbeurremanTileset.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		E423497020CE9A26005DE9FB /* LevelManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LevelManager.hpp; sourceTree = "<group>"; };
 		E426533A20C983E50088624E /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		E426533B20C983E50088624E /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		E4D0BCA120D3CE1200B26378 /* BonBeurreMap1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BonBeurreMap1.txt; sourceTree = "<group>"; };
+		E4D0BCA320D3D20D00B26378 /* bonbeurremanTileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bonbeurremanTileset.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 		E426532E20C954B80088624E /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				E4D0BCA120D3CE1200B26378 /* BonBeurreMap1.txt */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 		E426532F20C955430088624E /* Tilesets */ = {
 			isa = PBXGroup;
 			children = (
+				E4D0BCA320D3D20D00B26378 /* bonbeurremanTileset.png */,
 			);
 			name = Tilesets;
 			sourceTree = "<group>";
@@ -260,10 +266,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4D0BCA420D3D20D00B26378 /* bonbeurremanTileset.png in Resources */,
 				82D1D98B20B04C3C00136978 /* icon.png in Resources */,
 				82D1D98920B04C3C00136978 /* sansation.ttf in Resources */,
 				82D1D98720B04C3C00136978 /* nice_music.ogg in Resources */,
 				82D1D98520B04C3C00136978 /* cute_image.jpg in Resources */,
+				E4D0BCA220D3CE1200B26378 /* BonBeurreMap1.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
