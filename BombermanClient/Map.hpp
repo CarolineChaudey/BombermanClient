@@ -51,10 +51,11 @@ public:
     string getTilesetTexturePath()const;
     string getTilesetPath()const;
     
-    sf::Texture getTilesetTexture()const;
-    sf::Sprite getTileset()const;
+    sf::Texture& getTilesetTexture();
+    sf::Sprite&  getTileset();
     
     int getElementOnMap(LAYERS layer, int x, int y);
+    
     
     //SETTERS
     void setTilesetId(int id);
@@ -77,14 +78,17 @@ public:
     void setTilesetTexturePath(string path);
     void setTilesetPath(string path);
     
-    void setTilesetTexture(sf::Texture texture);
-    void setTileset(sf::Sprite sprite);
+    void setTilesetTexture(sf::Texture *texture);
+    void setTileset(sf::Sprite *sprite);
     
     void setElementOnMap(LAYERS layer, int y, int x, int value);
     
     void initLayers();
     
     void printLayers();
+    
+    //Boolean
+    bool hasTileset = false; 
     
 private:
     //Numéro du tileset à utiliser pour dessiner la map
@@ -115,8 +119,9 @@ private:
     string tileset_path;
     
     //Tilesets
-    sf::Texture tileset_texture;
-    sf::Sprite tileset;
+    sf::Texture* tileset_texture;
+    sf::Sprite* tileset;
+    
     
     
 };

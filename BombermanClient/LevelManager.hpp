@@ -21,7 +21,7 @@ public:
     LevelManager(Map map);
     
     void loadMap(std::string filename);
-    void drawMap(int layer, sf::RenderWindow &window);
+    void drawMap(sf::RenderWindow &window);
 
     void changeMapSize(int sizeX, int sizeY);
     

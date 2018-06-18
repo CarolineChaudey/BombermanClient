@@ -13,8 +13,8 @@ Map::Map() {
     max_x = max_y = 0;
     size_x = size_y = 0;
     
-    tileset_texture = *new Texture();
-    tileset = *new Sprite();
+    tileset_texture = new Texture();
+    tileset = new Sprite();
 
 }
 
@@ -30,8 +30,8 @@ Map::Map(int size_x, int size_y) {
     
     initLayers();
     
-    tileset_texture = *new Texture();
-    tileset = *new Sprite();
+    tileset_texture = new Texture();
+    tileset = new Sprite();
     
 }
 
@@ -149,19 +149,19 @@ void Map::setElementOnMap(LAYERS layer, int y, int x, int value) {
     };
 }
 
-sf::Texture Map::getTilesetTexture() const { 
-    return this->tileset_texture;
+sf::Texture& Map::getTilesetTexture() {
+    return *this->tileset_texture;
 }
 
-sf::Sprite Map::getTileset() const { 
-    return this->tileset;
+sf::Sprite& Map::getTileset() {
+    return *this->tileset;
 }
 
-void Map::setTilesetTexture(sf::Texture texture) { 
+void Map::setTilesetTexture(sf::Texture *texture) {
     this->tileset_texture = texture;
 }
 
-void Map::setTileset(sf::Sprite sprite) { 
+void Map::setTileset(sf::Sprite *sprite) {
     this->tileset = sprite;
 }
 

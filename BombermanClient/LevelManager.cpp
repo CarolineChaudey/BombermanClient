@@ -12,7 +12,8 @@
 LevelManager::LevelManager(Map map) {
     this->map = map;
     if(map.getTilesetTexture().loadFromFile(map.getTilesetTexturePath())){
-        map.getTileset().setTexture(map.getTilesetTexture());
+        this->map.getTileset().setTexture(map.getTilesetTexture());
+        this->map.hasTileset = true;
     } else {
         cout << "Erreur durant le chargement de l'image du tileset." << endl;
     }
@@ -33,7 +34,7 @@ void LevelManager::loadMap(string filename) {
     
     //On ouvre le fichier
     fin.open(filename, fstream::in);
-
+    
     //Si on échoue, on fait une erreur
     if (!fin.is_open())
     {
@@ -43,7 +44,7 @@ void LevelManager::loadMap(string filename) {
     //De quoi contenir notre map
     vector < vector <string> > MapString;
     vector < string > lignes;
-
+    
     //On lit notre fichier jusqu'à la fin (eof = end of file)
     while (!fin.eof())
     {
@@ -82,13 +83,14 @@ void LevelManager::loadMap(string filename) {
             MapString.push_back(lignes);
         
     }
-
+    
     fin.close();
-
+    
     map.setStartX(stoi(MapString[0][1]));
     map.setStartY(stoi(MapString[0][2]));
     
     changeMapSize(stoi(MapString[0][3]), stoi(MapString[0][4]));
+    
     for (y = 1; y <= map.getSizeY(); y++) //On commence a 1 car la premiere ligne contient des valeur d'option
     {
         
@@ -96,41 +98,89 @@ void LevelManager::loadMap(string filename) {
         {
             //On copie la valeur de notre Tableau
             //dans notre tableau tile à deux dimensions
-            map.setElementOnMap(LAYERS::LAYER1, y, x, stoi(MapString[y][x]));
+            map.setElementOnMap(LAYERS::LAYER1, y-1, x, stoi(MapString[y][x]));
         }
         
         
     }
+    
     for (y = 0; y < map.getSizeY(); y++)
     {
         for (x = 0; x < map.getSizeX(); x++)
         {
             
-            map.setElementOnMap(LAYERS::LAYER2, x, y, stoi(MapString[y + map.getSizeY()][x]));
+            map.setElementOnMap(LAYERS::LAYER2, y, x, stoi(MapString[(y+1) + map.getSizeY()][x]));
         }
     }
+    
     //Puis pour la troisième :
     for (y = 0; y < map.getSizeY(); y++)
     {
         for (x = 0; x < map.getSizeX(); x++)
         {
-            map.setElementOnMap(LAYERS::LAYER3, x, y, stoi(MapString[y + map.getSizeY() * 2][x]));
+            map.setElementOnMap(LAYERS::LAYER3, y, x, stoi(MapString[(y+1) + map.getSizeY() * 2][x]));
             
         }
     }
     
-    map.printLayers();
-   /*if(map->TilesetTexture.isNull())
-    {
-        ChargerTileset();
-        drawMap();
-        drawGrill();
-    }*/
-    
 }
 
-void LevelManager::drawMap(int layer, sf::RenderWindow &window) { 
+void LevelManager::drawMap(sf::RenderWindow &window) {
     
+    if(this->map.hasTileset)
+    {
+        //Le max en X
+        int x2 = this->map.getSizeX() * 32;
+        
+        //Le max en Y
+        int y2 = this->map.getSizeY() * 32;
+        
+        //la ou le dessin doit commencer en X et en Y
+        int mapX = 0, mapY = 0;
+        
+        //La tuile a dessiner à l'instant T en fonction de sa couche
+        int tileFromLayer[3];
+        
+        
+        
+        //On va dessiner en Y
+        for (int y = 0; y < y2; y += 32)
+        {
+            
+            /* A chaque colonne de tile, on dessine la bonne tile en allant
+             de x = 0 à x = 640 */
+            for (int x = 0; x < x2; x += 32)
+            {
+                tileFromLayer[0] = this->map.getLayer2()[mapY][mapX];
+                tileFromLayer[1] = this->map.getLayer1()[mapY][mapX];
+                tileFromLayer[2] = this->map.getLayer3()[mapY][mapX];
+                
+                for(int i = 0; i < 3; i++)
+                {
+                    if(tileFromLayer[i] != 0)
+                    {
+                        /* Calcul pour obtenir son y (pour un tileset de 10 tiles
+                         par ligne, d'où le 10 */
+                        int ysource = 0;
+                        
+                        /* Et son x */
+                        int xsource = tileFromLayer[i] * 32;
+                        
+                        map.getTileset().setPosition(y, x);
+                        map.getTileset().setTextureRect(sf::IntRect(xsource, ysource, 32, 32));
+                        window.draw(map.getTileset());
+                        
+                    }
+                }
+                
+                
+                mapX++;
+            }
+            mapX = 0;
+            mapY++;
+        }
+        mapY = 0;
+    }
 }
 
 void LevelManager::changeMapSize(int sizeX, int sizeY) {
