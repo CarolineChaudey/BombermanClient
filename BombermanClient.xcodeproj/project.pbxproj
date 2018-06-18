@@ -19,6 +19,7 @@
 		E406F99A20B0AAFD00633957 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99820B0AAFD00633957 /* Player.cpp */; };
 		E423497120CE9A26005DE9FB /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E423496F20CE9A26005DE9FB /* LevelManager.cpp */; };
 		E426533C20C983E50088624E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E426533A20C983E50088624E /* Game.cpp */; };
+		E46C925A20D7FC0A0021E6FB /* KeyboardController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E46C925820D7FC0A0021E6FB /* KeyboardController.cpp */; };
 		E4D0BCA220D3CE1200B26378 /* BonBeurreMap1.txt in Resources */ = {isa = PBXBuildFile; fileRef = E4D0BCA120D3CE1200B26378 /* BonBeurreMap1.txt */; };
 		E4D0BCA420D3D20D00B26378 /* bonbeurremanTileset.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D0BCA320D3D20D00B26378 /* bonbeurremanTileset.png */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,9 @@
 		E423497020CE9A26005DE9FB /* LevelManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LevelManager.hpp; sourceTree = "<group>"; };
 		E426533A20C983E50088624E /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		E426533B20C983E50088624E /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		E46C925820D7FC0A0021E6FB /* KeyboardController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardController.cpp; sourceTree = "<group>"; };
+		E46C925920D7FC0A0021E6FB /* KeyboardController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardController.hpp; sourceTree = "<group>"; };
+		E46C925C20D7FC490021E6FB /* IController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IController.hpp; sourceTree = "<group>"; };
 		E4D0BCA120D3CE1200B26378 /* BonBeurreMap1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BonBeurreMap1.txt; sourceTree = "<group>"; };
 		E4D0BCA320D3D20D00B26378 /* bonbeurremanTileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bonbeurremanTileset.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +83,7 @@
 		82D1D97B20B04C3C00136978 /* BombermanClient */ = {
 			isa = PBXGroup;
 			children = (
+				E46C925720D7FAB30021E6FB /* Controllers */,
 				E426533920C983B30088624E /* Engines */,
 				E426533720C97C110088624E /* Menus */,
 				E426533520C97A510088624E /* Managers */,
@@ -209,6 +214,16 @@
 			name = Engines;
 			sourceTree = "<group>";
 		};
+		E46C925720D7FAB30021E6FB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E46C925820D7FC0A0021E6FB /* KeyboardController.cpp */,
+				E46C925920D7FC0A0021E6FB /* KeyboardController.hpp */,
+				E46C925C20D7FC490021E6FB /* IController.hpp */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -299,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				821C2AA420CD693C0074BACE /* GameServerService.cpp in Sources */,
+				E46C925A20D7FC0A0021E6FB /* KeyboardController.cpp in Sources */,
 				E406F99420B0A6D700633957 /* Map.cpp in Sources */,
 				E406F99720B0A9B100633957 /* Bomb.cpp in Sources */,
 				82D1D98220B04C3C00136978 /* main.cpp in Sources */,

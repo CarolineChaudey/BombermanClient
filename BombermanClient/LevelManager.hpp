@@ -26,7 +26,6 @@ public:
     void changeMapSize(int sizeX, int sizeY);
     
     
-    
 private:
     
     //Map to manage

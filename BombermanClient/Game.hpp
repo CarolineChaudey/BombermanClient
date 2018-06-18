@@ -10,5 +10,19 @@
 #define Game_hpp
 
 #include <stdio.h>
+#include "LevelManager.hpp"
+#include "IController.hpp"
+
+class Game{
+  
+public:
+    
+    
+private:
+    LevelManager levelManager;
+    IController controller;
+    
+};
+
 
 #endif /* Game_hpp */
