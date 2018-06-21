@@ -108,6 +108,9 @@ int main(int, char const**)
         
         lManager.drawMap(window);
         
+        //Fonction pour ajouter une image sur la map
+        //lManager.addTile( (int)TILES::BUTTER, 6, 6, window);
+        
         window.display();
         
     }

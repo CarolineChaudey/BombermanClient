@@ -20,6 +20,7 @@
 		E423497120CE9A26005DE9FB /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E423496F20CE9A26005DE9FB /* LevelManager.cpp */; };
 		E426533C20C983E50088624E /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E426533A20C983E50088624E /* Game.cpp */; };
 		E46C925A20D7FC0A0021E6FB /* KeyboardController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E46C925820D7FC0A0021E6FB /* KeyboardController.cpp */; };
+		E46C925F20D800DD0021E6FB /* testBigMap.txt in Resources */ = {isa = PBXBuildFile; fileRef = E46C925E20D800DD0021E6FB /* testBigMap.txt */; };
 		E4D0BCA220D3CE1200B26378 /* BonBeurreMap1.txt in Resources */ = {isa = PBXBuildFile; fileRef = E4D0BCA120D3CE1200B26378 /* BonBeurreMap1.txt */; };
 		E4D0BCA420D3D20D00B26378 /* bonbeurremanTileset.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D0BCA320D3D20D00B26378 /* bonbeurremanTileset.png */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		E46C925820D7FC0A0021E6FB /* KeyboardController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardController.cpp; sourceTree = "<group>"; };
 		E46C925920D7FC0A0021E6FB /* KeyboardController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardController.hpp; sourceTree = "<group>"; };
 		E46C925C20D7FC490021E6FB /* IController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IController.hpp; sourceTree = "<group>"; };
+		E46C925E20D800DD0021E6FB /* testBigMap.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testBigMap.txt; sourceTree = "<group>"; };
 		E4D0BCA120D3CE1200B26378 /* BonBeurreMap1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BonBeurreMap1.txt; sourceTree = "<group>"; };
 		E4D0BCA320D3D20D00B26378 /* bonbeurremanTileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bonbeurremanTileset.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 		E426532E20C954B80088624E /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				E46C925E20D800DD0021E6FB /* testBigMap.txt */,
 				E4D0BCA120D3CE1200B26378 /* BonBeurreMap1.txt */,
 			);
 			name = Maps;
@@ -281,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E46C925F20D800DD0021E6FB /* testBigMap.txt in Resources */,
 				E4D0BCA420D3D20D00B26378 /* bonbeurremanTileset.png in Resources */,
 				82D1D98B20B04C3C00136978 /* icon.png in Resources */,
 				82D1D98920B04C3C00136978 /* sansation.ttf in Resources */,

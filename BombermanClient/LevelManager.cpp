@@ -17,7 +17,6 @@ LevelManager::LevelManager(Map map) {
     } else {
         cout << "Erreur durant le chargement de l'image du tileset." << endl;
     }
-    
 }
 
 void LevelManager::loadMap(string filename) {
@@ -41,6 +40,7 @@ void LevelManager::loadMap(string filename) {
         cerr << "Erreur de chargement du fichier.\n";
         exit(1);
     }
+    
     //De quoi contenir notre map
     vector < vector <string> > MapString;
     vector < string > lignes;
@@ -172,8 +172,6 @@ void LevelManager::drawMap(sf::RenderWindow &window) {
                         
                     }
                 }
-                
-                
                 mapX++;
             }
             mapX = 0;
@@ -192,6 +190,15 @@ void LevelManager::changeMapSize(int sizeX, int sizeY) {
     
     
 }
+
+void LevelManager::addTile(int tile, int position_x, int position_y, sf::RenderWindow &window) {
+    
+    map.getTileset().setPosition(position_y*32, position_x*32);
+    map.getTileset().setTextureRect(sf::IntRect(tile*32, 0, 32, 32));
+    window.draw(map.getTileset());
+    
+}
+
 
 
 

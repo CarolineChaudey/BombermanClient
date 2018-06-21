@@ -24,6 +24,12 @@ using namespace sf;
 
 enum class LAYERS { LAYER1, LAYER2, LAYER3 };
 
+enum class TILES { EMPTY = 0, TOP_WALL = 1, GROUND = 2, LEFT_WALL = 3,
+                   RIGHT_WALL = 4, BOTTOM_WALL = 5, HAY = 6, TOP_LEFT_CORNER = 7,
+                   TOP_RIGHT_CORNER = 8, BOTTOM_LEFT_CORNER = 9, BOTTOM_RIGHT_CORNER = 10,
+                   BUTTER = 11, PILLAER = 12
+};
+
 class Map{
 
 public:
