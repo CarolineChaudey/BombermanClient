@@ -26,6 +26,7 @@ RoomMenu::RoomMenu(float width, float height, int nb_room, string fontname) {
         this->menu[i].setFillColor(sf::Color::White);
         this->menu[i].setPosition(width / 3, height / (menu.size() + 1) * (i+1));
     }
+    this->menu[0].setFillColor(sf::Color::Red);
     selectedItemIndex = 0;
     
     
@@ -37,11 +38,20 @@ RoomMenu::~RoomMenu() noexcept {
 
 
 void RoomMenu::UpSelection(){
-    this->selectedItemIndex++;
+    if(this->selectedItemIndex > 0){
+        this->menu[selectedItemIndex].setFillColor(sf::Color::White);
+        this->selectedItemIndex--;
+        this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
+    }
+
 }
 
 void RoomMenu::DownSelection(){
-    this->selectedItemIndex--;
+    if(this->selectedItemIndex < 3){
+        this->menu[selectedItemIndex].setFillColor(sf::Color::White);
+        this->selectedItemIndex++;
+        this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
+    }
 }
 
 void RoomMenu::drawMenu(sf::RenderWindow &window) {

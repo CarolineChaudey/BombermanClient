@@ -32,6 +32,8 @@
 #include "Map.hpp"
 #include "IMenu.hpp"
 #include "RoomMenu.hpp"
+#include "IController.hpp"
+#include "KeyboardController.hpp"
 
 void getRoomsFromServer() {
     GameServerService* gameServerService = new GameServerService();
@@ -57,6 +59,7 @@ int main(int, char const**)
    // IMenu menu = RoomMenu(window.getSize().x, window.getSize().y);
     IMenu* menu = new RoomMenu(window.getSize().x, window.getSize().y, 4, resourcePath() + "sansation.ttf");
 
+    IController* ctrl = new KeyboardController();
   
     // Set the Icon
 //    sf::Image icon;
@@ -97,13 +100,15 @@ int main(int, char const**)
         sf::Event event;
         while (window.pollEvent(event))
         {
-            // Close window: exit
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            }
-            // Escape pressed: exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                window.close();
+            KEYS key = ctrl->manageEvent(window, event);
+            
+            switch (key) {
+                case KEYS::LEFT:
+                    menu->UpSelection();
+                    break;
+                case KEYS::RIGHT:
+                    menu->DownSelection();
+                    break;
             }
         }
 

@@ -9,9 +9,17 @@
 #ifndef IController_hpp
 #define IController_hpp
 
+#include <SFML/Graphics.hpp>
 #include <stdio.h>
 
+enum class KEYS { UP, LEFT, RIGHT, DOWN };
+
 class IController{
+    
+public:
+    virtual ~IController() {};
+    virtual KEYS manageEvent(sf::RenderWindow &window, sf::Event event) = 0;
+
     
 };
 

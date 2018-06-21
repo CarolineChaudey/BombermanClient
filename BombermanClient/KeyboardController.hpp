@@ -12,8 +12,11 @@
 #include <stdio.h>
 #include "IController.hpp"
 
-class KeyboardController : IController{
-    
+
+
+class KeyboardController : public IController{
+public:
+    virtual KEYS manageEvent(sf::RenderWindow &window, sf::Event event);
     
 };
 

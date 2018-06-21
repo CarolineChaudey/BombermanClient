@@ -20,7 +20,7 @@ public:
     
 private:
     LevelManager levelManager;
-    IController controller;
+    IController* controller;
     
 };
 
