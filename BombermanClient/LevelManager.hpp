@@ -22,7 +22,6 @@ public:
     
     void loadMap(std::string filename);
     void drawMap(sf::RenderWindow &window);
-
     void addTile(int tile, int position_x, int position_y, sf::RenderWindow &windows);
     void changeMapSize(int sizeX, int sizeY);
     

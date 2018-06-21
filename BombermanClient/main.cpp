@@ -30,6 +30,8 @@
 #include "GameServerService.hpp"
 #include "LevelManager.hpp"
 #include "Map.hpp"
+#include "IMenu.hpp"
+#include "RoomMenu.hpp"
 
 void getRoomsFromServer() {
     GameServerService* gameServerService = new GameServerService();
@@ -48,12 +50,14 @@ int main(int, char const**)
     LevelManager lManager = *new LevelManager(myMap);
     lManager.loadMap(resourcePath() + "BonBeurreMap1.txt");
     
-    
-    
+
     // Create the main window
-    sf::RenderWindow window(VideoMode(800, 600, 32), "Bon beurre man");
+    sf::RenderWindow window(VideoMode(800, 600), "Bon beurre man");
     
-    
+   // IMenu menu = RoomMenu(window.getSize().x, window.getSize().y);
+    IMenu* menu = new RoomMenu(window.getSize().x, window.getSize().y, 4, resourcePath() + "sansation.ttf");
+
+  
     // Set the Icon
 //    sf::Image icon;
 //    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
@@ -106,8 +110,9 @@ int main(int, char const**)
     
         window.clear();
         
-        lManager.drawMap(window);
-        
+        menu->drawMenu(window);
+      // lManager.drawMap(window);
+     
         //Fonction pour ajouter une image sur la map
         //lManager.addTile( (int)TILES::BUTTER, 6, 6, window);
         
