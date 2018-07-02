@@ -12,13 +12,13 @@
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
 
-enum class KEYS { UP, LEFT, RIGHT, DOWN };
+enum class KEYS {NOKEY, UP, LEFT, RIGHT, DOWN, EXIT, ENTER, RETURN};
 
 class IController{
     
 public:
     virtual ~IController() {};
-    virtual KEYS manageEvent(sf::RenderWindow &window, sf::Event event) = 0;
+    virtual KEYS manageEvent(sf::Event event) = 0;
 
     
 };

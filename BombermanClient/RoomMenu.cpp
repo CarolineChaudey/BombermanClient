@@ -43,7 +43,6 @@ void RoomMenu::UpSelection(){
         this->selectedItemIndex--;
         this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
     }
-
 }
 
 void RoomMenu::DownSelection(){

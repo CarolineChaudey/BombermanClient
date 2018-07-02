@@ -16,7 +16,7 @@
 
 class KeyboardController : public IController{
 public:
-    virtual KEYS manageEvent(sf::RenderWindow &window, sf::Event event);
+    virtual KEYS manageEvent(sf::Event event);
     
 };
 

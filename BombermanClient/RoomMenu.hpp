@@ -23,7 +23,7 @@ public:
     
      void UpSelection();
      void DownSelection();
-     void drawMenu(sf::RenderWindow &window);
+     void drawMenu(sf::RenderWindow &window);   
      int GetPressedItem();
 
     

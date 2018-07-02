@@ -9,7 +9,7 @@
 #include "KeyboardController.hpp"
 
 
-KEYS KeyboardController::manageEvent(sf::RenderWindow &window, sf::Event event) {
+KEYS KeyboardController::manageEvent(sf::Event event) {
  
     switch (event.type)
     {
@@ -23,11 +23,21 @@ KEYS KeyboardController::manageEvent(sf::RenderWindow &window, sf::Event event) 
                     return KEYS::LEFT;
                 case sf::Keyboard::Right:
                     return KEYS::RIGHT;
+                case sf::Keyboard::Enter:
+                    return KEYS::ENTER;
+                case sf::Keyboard::Q:
+                    return KEYS::RETURN;
+                default:
+                    return KEYS::NOKEY;
+                    
             }
             break;
         case sf::Event::Closed:
-            window.close();
+            return KEYS::EXIT;
             break;
+            
+        default:
+            return KEYS::NOKEY;
             
     }
 
