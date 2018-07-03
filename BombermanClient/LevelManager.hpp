@@ -12,11 +12,13 @@
 #include <stdio.h>
 
 #include "Map.hpp"
+#include "Player.hpp"
+
 
 class LevelManager{
-  
+ 
 public:
-    
+
     LevelManager();
     LevelManager(Map map);
     
@@ -24,6 +26,9 @@ public:
     void drawMap(sf::RenderWindow &window);
     void addTile(int tile, int position_x, int position_y, sf::RenderWindow &windows);
     void changeMapSize(int sizeX, int sizeY);
+    void addPlayer(Player player);
+    void drawPlayers(sf::RenderWindow &window);
+    Player* getPlayerAt(int i);
     
     
 private:
@@ -31,6 +36,8 @@ private:
     //Map to manage
     Map map;
     
+    //Players on the battlefield
+    Player* players[4];
     
 };
 

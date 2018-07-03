@@ -10,7 +10,9 @@
 #define Bomb_hpp
 
 #include <stdio.h>
+#include <SFML/Graphics.hpp>
 
+using namespace sf;
 class Bomb{
 public:
     Bomb();
@@ -28,5 +30,7 @@ private:
     int distance;
     int degats;
     int delay;
+    sf::Texture bombTexture;
+    sf::Sprite bombSprite;
 };
 #endif /* Bomb_hpp */

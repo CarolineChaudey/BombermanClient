@@ -17,6 +17,7 @@
 		E406F99420B0A6D700633957 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99320B0A6D700633957 /* Map.cpp */; };
 		E406F99720B0A9B100633957 /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99520B0A9B100633957 /* Bomb.cpp */; };
 		E406F99A20B0AAFD00633957 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99820B0AAFD00633957 /* Player.cpp */; };
+		E4168B3820EA57D6005A98EC /* fermie01rSpriteSheet.gif in Resources */ = {isa = PBXBuildFile; fileRef = E4168B3720EA57D3005A98EC /* fermie01rSpriteSheet.gif */; };
 		E423497120CE9A26005DE9FB /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E423496F20CE9A26005DE9FB /* LevelManager.cpp */; };
 		E426533C20C983E50088624E /* GameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E426533A20C983E50088624E /* GameEngine.cpp */; };
 		E46C925A20D7FC0A0021E6FB /* KeyboardController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E46C925820D7FC0A0021E6FB /* KeyboardController.cpp */; };
@@ -44,6 +45,7 @@
 		E406F99620B0A9B100633957 /* Bomb.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bomb.hpp; sourceTree = "<group>"; };
 		E406F99820B0AAFD00633957 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		E406F99920B0AAFD00633957 /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		E4168B3720EA57D3005A98EC /* fermie01rSpriteSheet.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fermie01rSpriteSheet.gif; sourceTree = "<group>"; };
 		E423496F20CE9A26005DE9FB /* LevelManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LevelManager.cpp; sourceTree = "<group>"; };
 		E423497020CE9A26005DE9FB /* LevelManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LevelManager.hpp; sourceTree = "<group>"; };
 		E426533A20C983E50088624E /* GameEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameEngine.cpp; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		E426533020C9554B0088624E /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				E4168B3720EA57D3005A98EC /* fermie01rSpriteSheet.gif */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				82D1D98720B04C3C00136978 /* nice_music.ogg in Resources */,
 				82D1D98520B04C3C00136978 /* cute_image.jpg in Resources */,
 				E4D0BCA220D3CE1200B26378 /* BonBeurreMap1.txt in Resources */,
+				E4168B3820EA57D6005A98EC /* fermie01rSpriteSheet.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

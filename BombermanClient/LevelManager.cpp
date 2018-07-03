@@ -14,6 +14,10 @@ LevelManager::LevelManager(Map map) {
     if(map.getTilesetTexture().loadFromFile(map.getTilesetTexturePath())){
         this->map.getTileset().setTexture(map.getTilesetTexture());
         this->map.hasTileset = true;
+        for(int i = 0; i < 4; i++){
+            this->players[i] = NULL;
+        }
+
     } else {
         cout << "Erreur durant le chargement de l'image du tileset." << endl;
     }
@@ -198,6 +202,54 @@ void LevelManager::addTile(int tile, int position_x, int position_y, sf::RenderW
     window.draw(map.getTileset());
     
 }
+
+void LevelManager::addPlayer(Player player) {
+    
+    if(player.getTilesetTexture().loadFromFile(player.getTilesetTexturePath())){
+        player.getTileset().setTexture(player.getTilesetTexture());
+        
+        for(int i = 0; i < 4; i++){
+            if(this->players[i] == NULL){
+                this->players[i] = &player;
+                return;
+            }
+        }
+        
+    } else {
+        cout << "Erreur durant le chargement de l'image du player." << endl;
+    }
+
+    
+    
+}
+
+void LevelManager::drawPlayers(sf::RenderWindow &window) {
+
+    
+    for(int i = 0; i < 4; i++){
+        if(this->players[i] != NULL){
+            float JPosX = this->players[i]->getPosX();
+            float JPosY = this->players[i]->getPosY();
+            int directionValue = (int) this->players[i]->getDirection();
+            int timer = this->players[i]->timerAnimation;
+            
+            int tilePos = directionValue+(28*timer);
+            
+            players[i]->getTileset().setPosition(JPosY, JPosX);
+            cout << tilePos << endl;
+            players[i]->getTileset().setTextureRect(sf::IntRect(tilePos, 0, 28, 47));
+            window.draw(players[i]->getTileset());
+        }
+    }
+    
+}
+
+Player *LevelManager::getPlayerAt(int i) {
+    return this->players[i];
+}
+
+
+
 
 
 

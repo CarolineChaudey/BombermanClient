@@ -16,6 +16,8 @@ Player::Player() {
     this->bombs = NULL;
     this->bombsCapacity = 0;
     this->bombsRefreshDelay = 0;
+    tileset_texture = new Texture();
+    tileset = new Sprite();
 }
 
 
@@ -27,6 +29,8 @@ Player::Player(int numero, int pv, int speed, int bombsCapacity, int bombsRefres
     this->bombsRefreshDelay = bombsRefreshDelay;
     
     this->bombs = new Bomb[bombsCapacity];
+    tileset_texture = new Texture();
+    tileset = new Sprite();
 }
 
 int Player::getNumero() { 
@@ -96,5 +100,68 @@ Bomb Player::useBomb() {
     //Lancer le timer de récuperaition
     return bombUsed;
 }
+
+sf::Texture& Player::getTilesetTexture() {
+    return *this->tileset_texture;
+}
+
+sf::Sprite& Player::getTileset() {
+    return *this->tileset;
+}
+
+void Player::setTilesetTexture(sf::Texture *texture) {
+    this->tileset_texture = texture;
+}
+
+void Player::setTileset(sf::Sprite *sprite) {
+    this->tileset = sprite;
+}
+
+void Player::setTilesetTexturePath(std::string path) {
+    this->tileset_texture_path = path;
+}
+
+void Player::setTilesetPath(std::string path) {
+    this->tileset_path = path;
+}
+
+std::string Player::getTilesetTexturePath() const {
+    return this->tileset_texture_path;
+}
+
+std::string Player::getTilesetPath() const {
+    return this->tileset_path;
+}
+
+int Player::getPosX() { 
+    return this->posX;
+}
+
+int Player::getPosY() { 
+    return this->posY;
+}
+
+void Player::setPosX(int x) { 
+    this->posX = x;
+}
+
+void Player::setPosY(int y) { 
+    this->posY = y;
+}
+
+DIRECTION Player::getDirection() { 
+    return this->direction;
+}
+
+void Player::setDirection(DIRECTION direction) { 
+    this->direction = direction;
+}
+
+
+
+
+
+
+
 
 

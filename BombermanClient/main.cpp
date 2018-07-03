@@ -56,6 +56,17 @@ int main(int, char const**)
     LevelManager lManager = *new LevelManager(myMap);
     lManager.loadMap(resourcePath() + "BonBeurreMap1.txt");
     
+    Player playerOne = *new Player();
+    playerOne.setTilesetTexturePath(resourcePath() + "fermie01rSpriteSheet.gif");
+    playerOne.setPv(1);
+    playerOne.setPosX(32);
+    playerOne.setPosY(32);
+    playerOne.setSpeed(10);
+    playerOne.setNumero(0);
+    playerOne.setDirection(DIRECTION::DOWN);
+    playerOne.setBombsCapacity(0);
+    lManager.addPlayer(playerOne);
+    
     
     // Create the main window
     sf::RenderWindow window(VideoMode(800, 600), "Bon beurre man");

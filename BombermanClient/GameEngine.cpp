@@ -92,17 +92,29 @@ void GameEngine::launchRoomScreen(sf::RenderWindow &window, IMenu* menu) {
 void GameEngine::launchGameScreen(sf::RenderWindow &window) { 
     // Process events
     sf::Event event;
+    Player* player = this->levelManager->getPlayerAt(0);
     
     while (window.pollEvent(event))
     {
         KEYS key = controller->manageEvent(event);
         
+        
         switch (key) {
             case KEYS::LEFT:
-               // menu->UpSelection();
+                player->setDirection(DIRECTION::LEFT);
+                player->setPosY(player->getPosY()-32);
                 break;
             case KEYS::RIGHT:
-              //  menu->DownSelection();
+                player->setDirection(DIRECTION::RIGHT);
+                player->setPosY(player->getPosY()+32);
+                break;
+            case KEYS::UP:
+                player->setDirection(DIRECTION::UP);
+                player->setPosX(player->getPosX()-32);
+                break;
+            case KEYS::DOWN:
+                player->setDirection(DIRECTION::DOWN);
+                player->setPosX(player->getPosX()+32);
                 break;
             case KEYS::EXIT:
                 window.close();
@@ -117,7 +129,8 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
     window.clear();
     
     this->levelManager->drawMap(window);
-    
+    this->levelManager->drawPlayers(window);
+
     //Fonction pour ajouter une image sur la map
     //lManager.addTile( (int)TILES::BUTTER, 6, 6, window);
     
