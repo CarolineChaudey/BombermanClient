@@ -20,9 +20,11 @@
 class GameServerService {
 public:
     void getRooms(char* recvline);
+    bool chooseRoom(int roomId);
 private:
     char serverAddr[15] = "127.0.0.1";
     int serverPort = 8081;
+    int co_socket;
 };
 
 #endif /* GameServerService_hpp */
