@@ -33,14 +33,7 @@
 #include "IController.hpp"
 #include "KeyboardController.hpp"
 #include "GameEngine.hpp"
-/*
-void getRoomsFromServer() {
-    GameServerService* gameServerService = new GameServerService();
-    char recvline[100] = "";
-    gameServerService->getRooms(recvline);
-    printf("%s\n", recvline);
-}
-*/
+
 bool introScreen = false;
 bool roomsScreen = true;
 bool gameScreen = false;
