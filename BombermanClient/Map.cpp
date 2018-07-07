@@ -82,11 +82,11 @@ int Map::getMaxY() const {
 int Map::getElementOnMap(LAYERS layer, int x, int y) {
     switch(layer){
         case LAYERS::LAYER1:
-            return this->layer_1[x][y];
+            return this->layer_1[y][x];
         case LAYERS::LAYER2:
-            return this->layer_2[x][y];
+            return this->layer_2[y][x];
         case LAYERS::LAYER3:
-            return this->layer_3[x][y];
+            return this->layer_3[y][x];
         default:
             return 0;
     };
