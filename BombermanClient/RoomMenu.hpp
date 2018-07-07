@@ -15,10 +15,10 @@
 
 using namespace std;
 
-class RoomMenu : public IMenu{
+class RoomMenu : public IMenu {
     
 public:
-    RoomMenu(float width, float height, int nb_room, string fontname);
+    RoomMenu(float width, float height, string fontname);
     ~RoomMenu();
     
      void UpSelection();

@@ -9,7 +9,8 @@
 #include "GameServerService.hpp"
 #include <string>
 
-void GameServerService::getRooms(char* recvline) {
+std::string GameServerService::getRooms() {
+    char recvline[100];
     char sendline[100];
     struct sockaddr_in servaddr;
 
@@ -28,6 +29,8 @@ void GameServerService::getRooms(char* recvline) {
 
     write(this->co_socket, "get-rooms", 10);
     read(this->co_socket, recvline, 100);
+    
+    return recvline;
 }
 
 bool GameServerService::chooseRoom(int roomId) {

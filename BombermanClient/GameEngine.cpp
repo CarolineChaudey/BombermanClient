@@ -29,7 +29,7 @@ GameEngine::~GameEngine() {
 
 void GameEngine::launchGameEngine(sf::RenderWindow &window) {
     
-    IMenu* menu = new RoomMenu(window.getSize().x, window.getSize().y, 4, resourcePath() + "sansation.ttf");
+    IMenu* menu = new RoomMenu(window.getSize().x, window.getSize().y, resourcePath() + "sansation.ttf");
     
     while (window.isOpen())
     {
@@ -67,9 +67,11 @@ void GameEngine::launchRoomScreen(sf::RenderWindow &window, IMenu* menu) {
         
         switch (key) {
             case KEYS::LEFT:
+            case KEYS::UP:
                 menu->UpSelection();
                 break;
             case KEYS::RIGHT:
+            case KEYS::DOWN:
                 menu->DownSelection();
                 break;
             case KEYS::EXIT:
@@ -77,6 +79,8 @@ void GameEngine::launchRoomScreen(sf::RenderWindow &window, IMenu* menu) {
                 break;
             case KEYS::ENTER:
                 this->state = WORKFLOW::GAMESCREEN;
+                break;
+            default:
                 break;
         }
         
