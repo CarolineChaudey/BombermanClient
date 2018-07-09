@@ -128,9 +128,12 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
             case KEYS::DOWN:
                 player->setDirection(DIRECTION::DOWN);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::EMPTY
-                 && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND){
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND){
                     player->setPosX(player->getPosX()+32);
                 }
+                break;
+            case KEYS::BOMB:
+                (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player->getPosX() + 32) / 32, (player->getPosY()) / 32, 11);
                 break;
             case KEYS::EXIT:
                 window.close();

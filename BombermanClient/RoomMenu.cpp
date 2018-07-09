@@ -30,7 +30,7 @@ RoomMenu::RoomMenu(float width, float height, string fontname) {
     GameServerService* serverService = new GameServerService();
     std::string rawResults = serverService->getRooms();
     std::vector<std::string> strRooms = split(rawResults, ';');
-    int nbRooms = strRooms.size() - 1; // -1 because of the last ;
+    int nbRooms = (int) strRooms.size() - 1; // -1 because of the last ;
     Lobby* lobbies = convertToLobbies(strRooms);
 
     this->menu = *new vector<sf::Text>(nbRooms);

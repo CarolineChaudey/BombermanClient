@@ -136,14 +136,14 @@ void Map::setMaxY(int maxY) {
     this->max_y = maxY;
 }
 
-void Map::setElementOnMap(LAYERS layer, int y, int x, int value) {
+void Map::setElementOnMap(LAYERS layer, int x, int y, int value) {
     switch(layer){
         case LAYERS::LAYER1:
-            layer_1[x][y] = value;
+            layer_1[y][x] = value;
         case LAYERS::LAYER2:
-            layer_2[x][y] = value;
+            layer_2[y][x] = value;
         case LAYERS::LAYER3:
-            layer_3[x][y] = value;
+            layer_3[y][x] = value;
         default:
             return;
     };
