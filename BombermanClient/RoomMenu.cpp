@@ -27,7 +27,6 @@ Lobby* convertToLobbies(std::vector<std::string> raw) {
 RoomMenu::RoomMenu(float width, float height, string fontname) {
     // la fenêtre ne s'affiche pas tant que la connexion n'est pas établie
     // TODO écran de chargement
-    GameServerService* serverService = new GameServerService();
     std::string rawResults = serverService->getRooms();
     std::vector<std::string> strRooms = split(rawResults, ';');
     int nbRooms = strRooms.size() - 1; // -1 because of the last ;
@@ -84,6 +83,7 @@ void RoomMenu::drawMenu(sf::RenderWindow &window) {
 }
 
 int RoomMenu::GetPressedItem() {
+    //bool accepted =
     return this->selectedItemIndex;
 }
 

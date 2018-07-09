@@ -8,6 +8,7 @@
 
 #include "GameServerService.hpp"
 #include <string>
+#include <iostream>
 
 std::string GameServerService::getRooms() {
     char recvline[100];

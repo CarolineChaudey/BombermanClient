@@ -12,6 +12,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "IMenu.hpp"
+#include "GameServerService.hpp"
 
 using namespace std;
 
@@ -26,8 +27,8 @@ public:
      void drawMenu(sf::RenderWindow &window);   
      int GetPressedItem();
 
-    
-    
+private:
+    GameServerService *serverService = new GameServerService();
 };
 
 #endif /* RoomMenu_hpp */
