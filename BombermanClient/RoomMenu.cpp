@@ -87,7 +87,11 @@ void RoomMenu::drawMenu(sf::RenderWindow &window) {
     }
 }
 
-void RoomMenu::GetPressedItem() {
-    bool accepted = serverService->chooseRoom(this->selectedItemIndex);
+int RoomMenu::GetPressedItem() {
+   return this->selectedItemIndex;
+}
+
+Lobby* IMenu::getLobbies() {
+    return this->lobbies;
 }
 

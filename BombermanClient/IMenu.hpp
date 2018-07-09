@@ -10,6 +10,7 @@
 #define IMenu_hpp
 
 #include <stdio.h>
+#include "Lobby.cpp"
 
 using namespace std;
 
@@ -21,9 +22,11 @@ public:
     virtual void UpSelection() = 0;
     virtual void DownSelection() = 0;
     virtual void drawMenu(sf::RenderWindow &window) = 0;
-    virtual void GetPressedItem() = 0;
+    virtual int GetPressedItem() = 0;
+    virtual Lobby* getLobbies();
     
 protected:
+    Lobby* lobbies;
     int selectedItemIndex;
     sf::Font font;
     vector<sf::Text> menu;

@@ -78,8 +78,14 @@ void GameEngine::launchRoomScreen(sf::RenderWindow &window, IMenu* menu) {
                 window.close();
                 break;
             case KEYS::ENTER:
-                this->state = WORKFLOW::GAMESCREEN;
+            {
+                int itemPosition = menu->GetPressedItem();
+                Lobby* lobbies = menu->getLobbies();
+                Lobby choosenLobby = lobbies[itemPosition];
+                std::cout << "Choosed : " << choosenLobby.getId() << "\n";
+                //this->state = WORKFLOW::GAMESCREEN;
                 break;
+            }
             default:
                 break;
         }

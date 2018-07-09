@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include "IMenu.hpp"
 #include "GameServerService.hpp"
-#include "Lobby.cpp"
 
 using namespace std;
 
@@ -27,11 +26,10 @@ public:
      void UpSelection();
      void DownSelection();
      void drawMenu(sf::RenderWindow &window);   
-     void GetPressedItem();
+     int GetPressedItem();
 
 private:
     GameServerService *serverService = new GameServerService();
-    Lobby* lobbies;
     float width;
     float height;
 };
