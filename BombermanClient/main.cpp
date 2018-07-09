@@ -34,14 +34,6 @@
 #include "KeyboardController.hpp"
 #include "GameEngine.hpp"
 
-void getRoomsFromServer() {
-    GameServerService* gameServerService = new GameServerService();
-    char recvline[100] = "";
-    //getRooms(recvline);
-    gameServerService->getRooms(recvline);
-    printf("%s\n", recvline);
-}
-
 bool introScreen = false;
 bool roomsScreen = true;
 bool gameScreen = false;
@@ -75,36 +67,7 @@ int main(int, char const**)
 
     
     IController* ctrl = new KeyboardController();
-    
-    // Set the Icon
-    //    sf::Image icon;
-    //    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
-    //        return EXIT_FAILURE;
-    //    }
-    //    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-    //
-    //    // Create a graphical text to display
-    //    sf::Font font;
-    //    if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
-    //        return EXIT_FAILURE;
-    //    }
-    //    sf::Text text("Recherche de parties ...", font, 50);
-    //    text.setFillColor(sf::Color::White);
-    //
-    //    // Load a music to play
-    //    sf::Music music;
-    //    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
-    //        return EXIT_FAILURE;
-    //    }
-    //
-    //    //Play the music
-    //    music.play();
-    //
-    //
-    // test function getRoomsFromServer
-    // à déplacer pour en extraire les infos et lancer la page des rooms
-    // getRoomsFromServer();
-    
+
     //On active la synchro verticale
     window.setVerticalSyncEnabled(true);
     
