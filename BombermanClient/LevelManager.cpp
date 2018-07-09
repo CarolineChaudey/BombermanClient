@@ -248,6 +248,10 @@ Player *LevelManager::getPlayerAt(int i) {
     return this->players[i];
 }
 
+Map *LevelManager::getMap() {
+    return &this->map;
+}
+
 
 
 

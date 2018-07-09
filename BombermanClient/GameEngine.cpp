@@ -106,19 +106,31 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
         switch (key) {
             case KEYS::LEFT:
                 player->setDirection(DIRECTION::LEFT);
-                player->setPosY(player->getPosY()-32);
+                if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX() + 32) / 32 , (player->getPosY()-32) / 32) == (int)TILES::EMPTY
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX() + 32) / 32 , (player->getPosY()-32) / 32) == (int)TILES::GROUND){
+                    player->setPosY(player->getPosY()-32);
+                }
                 break;
             case KEYS::RIGHT:
                 player->setDirection(DIRECTION::RIGHT);
-                player->setPosY(player->getPosY()+32);
+                if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32) / 32 , (player->getPosY()+32) / 32) == (int)TILES::EMPTY
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32) / 32 , (player->getPosY()+32) / 32) == (int)TILES::GROUND){
+                    player->setPosY(player->getPosY()+32);
+                }
                 break;
             case KEYS::UP:
                 player->setDirection(DIRECTION::UP);
-                player->setPosX(player->getPosX()-32);
+                if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32-32) / 32 , (player->getPosY()) / 32) == (int)TILES::EMPTY
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32-32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND){
+                    player->setPosX(player->getPosX()-32);
+                }
                 break;
             case KEYS::DOWN:
                 player->setDirection(DIRECTION::DOWN);
-                player->setPosX(player->getPosX()+32);
+                if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::EMPTY
+                 && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND){
+                    player->setPosX(player->getPosX()+32);
+                }
                 break;
             case KEYS::EXIT:
                 window.close();
