@@ -21,7 +21,7 @@ public:
     virtual void UpSelection() = 0;
     virtual void DownSelection() = 0;
     virtual void drawMenu(sf::RenderWindow &window) = 0;
-    virtual int GetPressedItem() = 0;
+    virtual void GetPressedItem() = 0;
     
 protected:
     int selectedItemIndex;
