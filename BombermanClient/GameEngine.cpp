@@ -138,7 +138,7 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
                 break;
             case KEYS::BOMB:
                 (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player->getPosX() + 32) / 32, (player->getPosY()) / 32, 11);
-                bonbList.push_back(*(new Bomb(2,2,2,(player->getPosX() + 32) / 32, (player->getPosY()) / 32)));
+                bonbList.push_back(*(new Bomb(2,2,3,(player->getPosX() + 32) / 32, (player->getPosY()) / 32)));
                 break;
             case KEYS::EXIT:
                 window.close();
@@ -163,9 +163,9 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
 
 void GameEngine::bombTick() {
     for (int i = 0; i < this->bonbList.size(); i++) {
-        this->bonbList[0].setDelay(this->bonbList[0].getDelay() - 1);
-        if (this->bonbList[0].getDelay() <= 0) {
-            (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,this->bonbList[0].getX(), this->bonbList[0].getY(), 0);
+        this->bonbList[i].setDelay(this->bonbList[i].getDelay() - 1);
+        if (this->bonbList[i].getDelay() <= 0) {
+            (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,this->bonbList[i].getX(), this->bonbList[i].getY(), 0);
             
         }
     }
