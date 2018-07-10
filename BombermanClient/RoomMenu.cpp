@@ -12,18 +12,7 @@
 #include <string>
 
 
-Lobby* convertToLobbies(std::vector<std::string> raw) {
-    Lobby* lobbies = new Lobby[raw.size()];
-    for (int i = 0; i < raw.size(); i++) {
-        std::string room = raw[i];
-        lobbies[i].setId(room[0] - '0');
-        lobbies[i].setNbPlayers(room[2] - '0');
-        lobbies[i].setMaxPlayers(room[4] - '0');
-    }
-    return lobbies;
-}
-
-RoomMenu::RoomMenu(float width, float height, string fontname) {
+RoomMenu::RoomMenu(float width, float height, string fontname, Lobby* lobbies, int nbLobbies) {
     // la fenêtre ne s'affiche pas tant que la connexion n'est pas établie
     // TODO écran de chargement
    
@@ -33,25 +22,26 @@ RoomMenu::RoomMenu(float width, float height, string fontname) {
     if (!this->font.loadFromFile(fontname)) {
         cout << "Impossible de charger la font" << endl;
     }
-    refresh();
     
-    this->menu[0].setFillColor(sf::Color::Red);
     selectedItemIndex = 0;
+    
+    if (lobbies != nullptr) {
+        this->lobbies = lobbies;
+        refresh(nbLobbies);
+    }
 }
 
 RoomMenu::~RoomMenu() noexcept {
     
 }
 
-void RoomMenu::refresh() {
-    std::string rawResults = serverService->getRooms();
-    std::vector<std::string> strRooms = split(rawResults, ';');
-    int nbRooms = strRooms.size() - 1; // -1 because of the last ;
-    this->lobbies = convertToLobbies(strRooms);
+void RoomMenu::refresh(int nbLobbies) {
+    //std::string rawResults = serverService->getRooms();
+    //std::vector<std::string> strRooms = split(rawResults, ';');
+    //int nbRooms = strRooms.size() - 1; // -1 because of the last ;
+    this->menu = *new vector<sf::Text>(nbLobbies);
     
-    this->menu = *new vector<sf::Text>(nbRooms);
-    
-    for(int i = 0; i < nbRooms; i++){
+    for(int i = 0; i < nbLobbies; i++){
         Lobby lobby = this->lobbies[i];
         string room = "Room " + std::to_string(lobby.getId())
         + " : " + std::to_string(lobby.getNbPlayers())
@@ -62,6 +52,7 @@ void RoomMenu::refresh() {
         this->menu[i].setFillColor(sf::Color::White);
         this->menu[i].setPosition(width / 5, height / (menu.size() + 1.5) * (i+1));
     }
+    this->menu[0].setFillColor(sf::Color::Red);
 }
 
 void RoomMenu::UpSelection(){
@@ -93,5 +84,9 @@ int RoomMenu::GetPressedItem() {
 
 Lobby* IMenu::getLobbies() {
     return this->lobbies;
+}
+
+void IMenu::inLobby(int i) {
+    this->menu[i].setFillColor(sf::Color::Yellow);
 }
 

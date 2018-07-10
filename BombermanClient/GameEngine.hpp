@@ -15,6 +15,7 @@
 #include "IMenu.hpp"
 #include "RoomMenu.hpp"
 #include "GameServerService.hpp"
+#include "StringUtil.hpp"
 
 
 enum class WORKFLOW {TITLESCREEN, ROOMSSCREEN, GAMESCREEN};

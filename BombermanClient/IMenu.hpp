@@ -24,6 +24,7 @@ public:
     virtual void drawMenu(sf::RenderWindow &window) = 0;
     virtual int GetPressedItem() = 0;
     virtual Lobby* getLobbies();
+    virtual void inLobby(int i);
     
 protected:
     Lobby* lobbies;

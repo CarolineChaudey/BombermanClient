@@ -35,7 +35,9 @@ std::string GameServerService::getRooms() {
 }
 
 bool GameServerService::chooseRoom(int roomId) {
-    write(this->co_socket, (void*) roomId, 1);
+    char strId[10];
+    sprintf(strId, "%d", roomId);
+    write(this->co_socket, strId, 10);
     printf("Choosen lobby sent.\n");
     char serverAnswer[5];
     read(this->co_socket, serverAnswer, 5);

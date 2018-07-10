@@ -19,17 +19,17 @@ using namespace std;
 class RoomMenu : public IMenu {
     
 public:
-    RoomMenu(float width, float height, string fontname);
+    //RoomMenu(float width, float height, string fontname);
+    RoomMenu(float width, float height, string fontname, Lobby* lobbies = nullptr, int nbLobbies = 0);
     ~RoomMenu();
     
-     void refresh();
+     void refresh(int nbLobbies);
      void UpSelection();
      void DownSelection();
      void drawMenu(sf::RenderWindow &window);   
      int GetPressedItem();
 
 private:
-    GameServerService *serverService = new GameServerService();
     float width;
     float height;
 };

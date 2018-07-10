@@ -9,7 +9,6 @@
 #include "GameEngine.hpp"
 
 
-
 GameEngine::GameEngine(LevelManager* levelManager, IController* controller) {
     this->levelManager = levelManager;
     this->controller = controller;
@@ -27,9 +26,24 @@ GameEngine::~GameEngine() {
     
 }
 
+Lobby* convertToLobbies(std::vector<std::string> raw) {
+    Lobby* lobbies = new Lobby[raw.size()];
+    for (int i = 0; i < raw.size(); i++) {
+        std::string room = raw[i];
+        lobbies[i].setId(room[0] - '0');
+        lobbies[i].setNbPlayers(room[2] - '0');
+        lobbies[i].setMaxPlayers(room[4] - '0');
+    }
+    return lobbies;
+}
+
 void GameEngine::launchGameEngine(sf::RenderWindow &window) {
-    
-    IMenu* menu = new RoomMenu(window.getSize().x, window.getSize().y, resourcePath() + "sansation.ttf");
+    // get rooms from server
+    std::string rawResults = this->gameServer->getRooms();
+    std::vector<std::string> strRooms = split(rawResults, ';');
+    int nbRooms = strRooms.size() - 1; // -1 because of the last ; in the splitted string
+    Lobby *lobbies = convertToLobbies(strRooms);
+    IMenu* menu = new RoomMenu(window.getSize().x, window.getSize().y, resourcePath() + "sansation.ttf", lobbies, nbRooms);
     
     while (window.isOpen())
     {
@@ -83,6 +97,10 @@ void GameEngine::launchRoomScreen(sf::RenderWindow &window, IMenu* menu) {
                 Lobby* lobbies = menu->getLobbies();
                 Lobby choosenLobby = lobbies[itemPosition];
                 std::cout << "Choosed : " << choosenLobby.getId() << "\n";
+                bool serverAnswer = this->gameServer->chooseRoom(choosenLobby.getId());
+                if (serverAnswer) {
+                    menu->inLobby(itemPosition);
+                }
                 //this->state = WORKFLOW::GAMESCREEN;
                 break;
             }
