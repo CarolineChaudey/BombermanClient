@@ -14,6 +14,8 @@ GameEngine::GameEngine(LevelManager* levelManager, IController* controller) {
     this->levelManager = levelManager;
     this->controller = controller;
     this->state = WORKFLOW::ROOMSSCREEN;
+    
+    this->bonbList = *new vector <Bomb>;
 }
 
 
@@ -21,6 +23,7 @@ GameEngine::GameEngine(LevelManager *levelManager, IController *controller, WORK
     this->levelManager = levelManager;
     this->controller = controller;
     this->state = state;
+    this->bonbList = *new vector <Bomb>;
 }
 
 GameEngine::~GameEngine() { 
@@ -126,6 +129,7 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
                 }
                 break;
             case KEYS::DOWN:
+                bombTick();
                 player->setDirection(DIRECTION::DOWN);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::EMPTY
                     && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND){
@@ -134,6 +138,7 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
                 break;
             case KEYS::BOMB:
                 (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player->getPosX() + 32) / 32, (player->getPosY()) / 32, 11);
+                bonbList.push_back(*(new Bomb(2,2,2,(player->getPosX() + 32) / 32, (player->getPosY()) / 32)));
                 break;
             case KEYS::EXIT:
                 window.close();
@@ -154,6 +159,16 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
     //lManager.addTile( (int)TILES::BUTTER, 6, 6, window);
     
     window.display();
+}
+
+void GameEngine::bombTick() {
+    for (int i = 0; i < this->bonbList.size(); i++) {
+        this->bonbList[0].setDelay(this->bonbList[0].getDelay() - 1);
+        if (this->bonbList[0].getDelay() <= 0) {
+            (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,this->bonbList[0].getX(), this->bonbList[0].getY(), 0);
+            
+        }
+    }
 }
 
 

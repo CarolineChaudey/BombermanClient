@@ -16,11 +16,13 @@ using namespace sf;
 class Bomb{
 public:
     Bomb();
-    Bomb(int distance, int degats, int delay);
+    Bomb(int distance, int degats, int delay, int x, int y);
     
     int getDistance();
     int getDegats();
     int getDelay();
+    int getX();
+    int getY();
     
     void setDistance(int d);
     void setDegats(int d);
@@ -30,6 +32,8 @@ private:
     int distance;
     int degats;
     int delay;
+    int x;
+    int y;
     sf::Texture bombTexture;
     sf::Sprite bombSprite;
 };

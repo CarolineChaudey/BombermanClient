@@ -13,12 +13,16 @@ Bomb::Bomb() {
     this->degats = 0;
     this->distance = 0;
     this->delay = 0;
+    this->x = 0;
+    this->y = 0;
 }
 
-Bomb::Bomb(int distance, int degats, int delay) {
+Bomb::Bomb(int distance, int degats, int delay, int x, int y) {
     this->distance = distance;
     this->degats = degats;
     this->delay = delay;
+    this->x = x;
+    this->y = y;
 }
 
 int Bomb::getDistance() { 
@@ -31,6 +35,12 @@ int Bomb::getDegats() {
 
 int Bomb::getDelay(){
     return this->delay;
+}
+int Bomb::getX(){
+    return this->x;
+}
+int Bomb::getY(){
+    return this->y;
 }
 void Bomb::setDistance(int d) { 
     this->distance = d;
