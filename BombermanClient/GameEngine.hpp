@@ -28,6 +28,7 @@ public:
     ~GameEngine();
     
     void launchGameEngine(sf::RenderWindow &window);
+    struct LobbyList getLobbies();
 
     
     

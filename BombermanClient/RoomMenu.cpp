@@ -27,7 +27,7 @@ RoomMenu::RoomMenu(float width, float height, string fontname, Lobby* lobbies, i
     
     if (lobbies != nullptr) {
         this->lobbies = lobbies;
-        refresh(nbLobbies);
+        buildMenu(nbLobbies);
     }
 }
 
@@ -35,10 +35,7 @@ RoomMenu::~RoomMenu() noexcept {
     
 }
 
-void RoomMenu::refresh(int nbLobbies) {
-    //std::string rawResults = serverService->getRooms();
-    //std::vector<std::string> strRooms = split(rawResults, ';');
-    //int nbRooms = strRooms.size() - 1; // -1 because of the last ;
+void RoomMenu::buildMenu(int nbLobbies) {
     this->menu = *new vector<sf::Text>(nbLobbies);
     
     for(int i = 0; i < nbLobbies; i++){
@@ -53,6 +50,12 @@ void RoomMenu::refresh(int nbLobbies) {
         this->menu[i].setPosition(width / 5, height / (menu.size() + 1.5) * (i+1));
     }
     this->menu[0].setFillColor(sf::Color::Red);
+}
+
+void RoomMenu::refreshMenu(Lobby *lobbies, int nbLobbies) {
+    std::cout << "refresh menu \n";
+    this->lobbies = lobbies;
+    this->buildMenu(nbLobbies);
 }
 
 void RoomMenu::UpSelection(){

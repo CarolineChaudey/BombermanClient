@@ -10,7 +10,7 @@
 #define IMenu_hpp
 
 #include <stdio.h>
-#include "Lobby.cpp"
+#include "Lobby.hpp"
 
 using namespace std;
 
@@ -25,6 +25,7 @@ public:
     virtual int GetPressedItem() = 0;
     virtual Lobby* getLobbies();
     virtual void inLobby(int i);
+    virtual void refreshMenu(Lobby *lobbies, int nbLobbies) = 0;
     
 protected:
     Lobby* lobbies;

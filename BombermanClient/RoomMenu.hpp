@@ -23,11 +23,12 @@ public:
     RoomMenu(float width, float height, string fontname, Lobby* lobbies = nullptr, int nbLobbies = 0);
     ~RoomMenu();
     
-     void refresh(int nbLobbies);
+     void buildMenu(int nbLobbies);
      void UpSelection();
      void DownSelection();
      void drawMenu(sf::RenderWindow &window);   
      int GetPressedItem();
+     void refreshMenu(Lobby *lobbies, int nbLobbies);
 
 private:
     float width;
