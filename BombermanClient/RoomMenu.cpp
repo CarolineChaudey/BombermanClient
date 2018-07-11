@@ -46,10 +46,16 @@ void RoomMenu::buildMenu(int nbLobbies) {
         this->menu[i].setString(room);
         this->menu[i].setFont(this->font);
         this->menu[i].setCharacterSize(50);
-        this->menu[i].setFillColor(sf::Color::White);
         this->menu[i].setPosition(width / 5, height / (menu.size() + 1.5) * (i+1));
+        if (IMenu::getInItemIndex() == i) {
+            this->menu[i].setFillColor(sf::Color::Yellow);
+        } else if (this->GetPressedItem() == i) {
+            this->menu[i].setFillColor(sf::Color::Red);
+        } else {
+            this->menu[i].setFillColor(sf::Color::White);
+        }
     }
-    this->menu[0].setFillColor(sf::Color::Red);
+    //this->menu[0].setFillColor(sf::Color::Red);
 }
 
 void RoomMenu::refreshMenu(Lobby *lobbies, int nbLobbies) {
@@ -60,18 +66,30 @@ void RoomMenu::refreshMenu(Lobby *lobbies, int nbLobbies) {
 
 void RoomMenu::UpSelection(){
     if(this->selectedItemIndex > 0){
-        this->menu[selectedItemIndex].setFillColor(sf::Color::White);
+        if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
+            this->menu[selectedItemIndex].setFillColor(sf::Color::White);
+        }
         this->selectedItemIndex--;
-        this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
+        if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
+            this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
+        }
     }
 }
 
 void RoomMenu::DownSelection(){
     if(this->selectedItemIndex < 3){
-        this->menu[selectedItemIndex].setFillColor(sf::Color::White);
+        if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
+            this->menu[selectedItemIndex].setFillColor(sf::Color::White);
+        }
         this->selectedItemIndex++;
-        this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
+        if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
+            this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
+        }
     }
+}
+
+bool RoomMenu::isCurrentLobby(int index) {
+    return index == IMenu::getInItemIndex();
 }
 
 void RoomMenu::drawMenu(sf::RenderWindow &window) {
@@ -89,7 +107,10 @@ Lobby* IMenu::getLobbies() {
     return this->lobbies;
 }
 
-void IMenu::inLobby(int i) {
-    this->menu[i].setFillColor(sf::Color::Yellow);
+int IMenu::getInItemIndex() const {
+    return this->inItemIndex;
 }
 
+void IMenu::setInItemIndex(int index) {
+    this->inItemIndex = index;
+}

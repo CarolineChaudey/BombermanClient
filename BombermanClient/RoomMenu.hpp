@@ -31,6 +31,8 @@ public:
      void refreshMenu(Lobby *lobbies, int nbLobbies);
 
 private:
+    bool isCurrentLobby(int index);
+    
     float width;
     float height;
 };

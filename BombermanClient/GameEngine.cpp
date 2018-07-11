@@ -110,9 +110,8 @@ void GameEngine::launchRoomScreen(sf::RenderWindow &window, IMenu* menu) {
                 std::cout << "Choosed : " << choosenLobby.getId() << "\n";
                 bool serverAnswer = this->gameServer->chooseRoom(choosenLobby.getId());
                 if (serverAnswer) {
-                    menu->inLobby(itemPosition);
+                    menu->setInItemIndex(itemPosition);
                     // refresh data
-                    int *nbRooms = 0;
                     struct LobbyList ll = this->getLobbies();
                     menu->refreshMenu(ll.lobbies, ll.size);
                 }

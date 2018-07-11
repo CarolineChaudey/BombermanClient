@@ -24,12 +24,14 @@ public:
     virtual void drawMenu(sf::RenderWindow &window) = 0;
     virtual int GetPressedItem() = 0;
     virtual Lobby* getLobbies();
-    virtual void inLobby(int i);
     virtual void refreshMenu(Lobby *lobbies, int nbLobbies) = 0;
+    virtual int getInItemIndex() const;
+    virtual void setInItemIndex(int index);
     
 protected:
     Lobby* lobbies;
-    int selectedItemIndex;
+    int inItemIndex = -1; // the room we are in
+    int selectedItemIndex; // the room the cursor is on
     sf::Font font;
     vector<sf::Text> menu;
 };
