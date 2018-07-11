@@ -27,6 +27,7 @@ RoomMenu::RoomMenu(float width, float height, string fontname, Lobby* lobbies, i
     
     if (lobbies != nullptr) {
         this->lobbies = lobbies;
+        IMenu::setNbLobbies(nbLobbies);
         buildMenu(nbLobbies);
     }
 }
@@ -61,6 +62,7 @@ void RoomMenu::buildMenu(int nbLobbies) {
 void RoomMenu::refreshMenu(Lobby *lobbies, int nbLobbies) {
     std::cout << "refresh menu \n";
     this->lobbies = lobbies;
+    IMenu::setNbLobbies(nbLobbies);
     this->buildMenu(nbLobbies);
 }
 
@@ -77,7 +79,7 @@ void RoomMenu::UpSelection(){
 }
 
 void RoomMenu::DownSelection(){
-    if(this->selectedItemIndex < 3){
+    if((this->selectedItemIndex + 1) < IMenu::getNbLobbies()){
         if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
             this->menu[selectedItemIndex].setFillColor(sf::Color::White);
         }
@@ -113,4 +115,12 @@ int IMenu::getInItemIndex() const {
 
 void IMenu::setInItemIndex(int index) {
     this->inItemIndex = index;
+}
+
+int IMenu::getNbLobbies() {
+    return this->nbLobbies;
+}
+
+void IMenu::setNbLobbies(int nb) {
+    this->nbLobbies = nb;
 }

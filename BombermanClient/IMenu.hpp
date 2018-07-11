@@ -27,9 +27,12 @@ public:
     virtual void refreshMenu(Lobby *lobbies, int nbLobbies) = 0;
     virtual int getInItemIndex() const;
     virtual void setInItemIndex(int index);
+    virtual int getNbLobbies();
+    virtual void setNbLobbies(int nb);
     
 protected:
     Lobby* lobbies;
+    int nbLobbies = 0;
     int inItemIndex = -1; // the room we are in
     int selectedItemIndex; // the room the cursor is on
     sf::Font font;
