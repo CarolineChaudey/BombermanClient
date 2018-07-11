@@ -247,6 +247,19 @@ void LevelManager::drawPlayers(sf::RenderWindow &window) {
 Player *LevelManager::getPlayerAt(int i) {
     return this->players[i];
 }
+vector<Player*> LevelManager::getAllPlayer() {
+    vector<Player*> listPlayer = *new vector<Player*>;
+    for(int i = 0; i < 4; i++){
+        if(this->players[i] != NULL){
+            listPlayer.push_back(this->players[i]);
+        } else {
+            break;
+        }
+    }
+    return listPlayer;
+    
+    
+}
 
 Map *LevelManager::getMap() {
     return &this->map;

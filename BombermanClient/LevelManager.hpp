@@ -29,6 +29,7 @@ public:
     void addPlayer(Player player);
     void drawPlayers(sf::RenderWindow &window);
     Player* getPlayerAt(int i);
+    vector<Player*> getAllPlayer();
     Map* getMap();
     
     

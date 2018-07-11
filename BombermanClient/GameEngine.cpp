@@ -1,4 +1,4 @@
-//
+		//
 //  Game.cpp
 //  BombermanClient
 //
@@ -23,7 +23,6 @@ GameEngine::GameEngine(LevelManager *levelManager, IController *controller, WORK
     this->levelManager = levelManager;
     this->controller = controller;
     this->state = state;
-    this->bonbList = *new vector <Bomb>;
 }
 
 GameEngine::~GameEngine() { 
@@ -110,21 +109,24 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
             case KEYS::LEFT:
                 player->setDirection(DIRECTION::LEFT);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX() + 32) / 32 , (player->getPosY()-32) / 32) == (int)TILES::EMPTY
-                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX() + 32) / 32 , (player->getPosY()-32) / 32) == (int)TILES::GROUND){
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX() + 32) / 32 , (player->getPosY()-32) / 32) == (int)TILES::GROUND
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER3, (player->getPosX() + 32) / 32 , (player->getPosY()-32) / 32) != (int)TILES::BUTTER){
                     player->setPosY(player->getPosY()-32);
                 }
                 break;
             case KEYS::RIGHT:
                 player->setDirection(DIRECTION::RIGHT);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32) / 32 , (player->getPosY()+32) / 32) == (int)TILES::EMPTY
-                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32) / 32 , (player->getPosY()+32) / 32) == (int)TILES::GROUND){
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32) / 32 , (player->getPosY()+32) / 32) == (int)TILES::GROUND
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER3, (player->getPosX()+32) / 32 , (player->getPosY()+32) / 32) != (int)TILES::BUTTER){
                     player->setPosY(player->getPosY()+32);
                 }
                 break;
             case KEYS::UP:
                 player->setDirection(DIRECTION::UP);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32-32) / 32 , (player->getPosY()) / 32) == (int)TILES::EMPTY
-                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32-32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND){
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32-32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER3, (player->getPosX()+32-32) / 32 , (player->getPosY()) / 32) != (int)TILES::BUTTER){
                     player->setPosX(player->getPosX()-32);
                 }
                 break;
@@ -132,13 +134,15 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
                 bombTick();
                 player->setDirection(DIRECTION::DOWN);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::EMPTY
-                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND){
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND
+                    && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER3, (player->getPosX()+32+32) / 32 , (player->getPosY()) / 32) != (int)TILES::BUTTER){
                     player->setPosX(player->getPosX()+32);
                 }
                 break;
             case KEYS::BOMB:
-                (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player->getPosX() + 32) / 32, (player->getPosY()) / 32, 11);
-                bonbList.push_back(*(new Bomb(2,2,3,(player->getPosX() + 32) / 32, (player->getPosY()) / 32)));
+                if (player->useBomb((player->getPosX() + 32) / 32, (player->getPosY()) / 32)) {
+                    (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player->getPosX() + 32) / 32, (player->getPosY()) / 32, (int)TILES::BUTTER);
+                }
                 break;
             case KEYS::EXIT:
                 window.close();
@@ -162,12 +166,25 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
 }
 
 void GameEngine::bombTick() {
-    for (int i = 0; i < this->bonbList.size(); i++) {
-        this->bonbList[i].setDelay(this->bonbList[i].getDelay() - 1);
-        if (this->bonbList[i].getDelay() <= 0) {
-            (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,this->bonbList[i].getX(), this->bonbList[i].getY(), 0);
-            
+    for (int i = 0; i < (this->levelManager)->getAllPlayer().size(); i++) {
+        Player* currentPlayer = (this->levelManager)->getPlayerAt(i);
+        Bomb* playerBombList = currentPlayer->bombs;
+        for (int j = 0; j < currentPlayer->getBombsCapacity(); j++) {
+            if (playerBombList[j].getActived() == 1) {
+                playerBombList[j].setDelay(playerBombList[j].getDelay() - 1);
+                if (playerBombList[j].getDelay() <= 0) {
+                    (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,playerBombList[j].getX(), playerBombList[j].getY(), 0);
+                    
+                    currentPlayer->deleteBombAt(j);
+                }
+            }
         }
+        
+        //this->bonbList[i].setDelay(this->bonbList[i].getDelay() - 1);
+        //if (this->bonbList[i].getDelay() <= 0) {
+        //    (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,this->bonbList[i].getX(), this->bonbList[i].getY(), 0);
+            
+        //}
     }
 }
 

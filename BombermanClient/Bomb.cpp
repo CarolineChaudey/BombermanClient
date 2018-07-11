@@ -9,7 +9,8 @@
 #include "Bomb.hpp"
 
 
-Bomb::Bomb() { 
+Bomb::Bomb() {
+    this->actived = 0;
     this->degats = 0;
     this->distance = 0;
     this->delay = 0;
@@ -17,24 +18,26 @@ Bomb::Bomb() {
     this->y = 0;
 }
 
-Bomb::Bomb(int distance, int degats, int delay, int x, int y) {
+Bomb::Bomb(int distance, int degats, int delay) {
+    this->actived = 0;
     this->distance = distance;
     this->degats = degats;
     this->delay = delay;
-    this->x = x;
-    this->y = y;
+    this->x = -1;
+    this->y = -1;
 }
 
 int Bomb::getDistance() { 
     return this->distance;
 }
-
 int Bomb::getDegats() { 
     return this->degats;
 }
-
 int Bomb::getDelay(){
     return this->delay;
+}
+int Bomb::getActived(){
+    return this->actived;
 }
 int Bomb::getX(){
     return this->x;
@@ -42,6 +45,7 @@ int Bomb::getX(){
 int Bomb::getY(){
     return this->y;
 }
+
 void Bomb::setDistance(int d) { 
     this->distance = d;
 }
@@ -51,4 +55,9 @@ void Bomb::setDegats(int d) {
 }
 void Bomb::setDelay(int d){
     this->delay = d;
+}
+void Bomb::activateBomb(int x, int y){
+    this->actived = 1;
+    this->x = x;
+    this->y = y;
 }

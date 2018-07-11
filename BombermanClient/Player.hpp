@@ -25,18 +25,18 @@ class Player{
     
 public:
     Player();
-    Player(int numero, int pv, int speed, int bombsCapacity, int bombsRefreshDelay);
+    Player(int numero, int pv, int speed, int bombsCapacity);
     
     
     int timerAnimation = 2;
     
+    Bomb* bombs;
     int getNumero();
     int getPv();
     int getSpeed();
     Bomb* getBombs();
     Bomb getBombAt(int i);
     int getBombsCapacity();
-    int getBombsRefreshDelay();
     string getTilesetTexturePath()const;
     string getTilesetPath()const;
     sf::Texture& getTilesetTexture();
@@ -52,9 +52,9 @@ public:
     void setSpeed(int speed);
     void setBombs(Bomb* bombs);
     void setBombAt(int i, Bomb bomb);
+    void deleteBombAt(int i);
     void setBombsCapacity(int bombsCapacity);
-    void setBombsRefreshDelay(int bombsRefreshDelay);
-    Bomb useBomb();
+    bool useBomb(int x, int y);
     void setTilesetTexturePath(string path);
     void setTilesetPath(string path);
     void setTilesetTexture(sf::Texture *texture);
@@ -72,7 +72,6 @@ private:
     int numero;
     int pv;
     int speed;
-    Bomb* bombs;
     int bombsCapacity;
     int bombsRefreshDelay;
     DIRECTION direction;
