@@ -40,6 +40,7 @@ private:
     void launchRoomScreen(sf::RenderWindow &window, IMenu* menu);
     void launchGameScreen(sf::RenderWindow &window);
     void bombTick();
+    void bombExplosion(Bomb bomb);
 
     
 };

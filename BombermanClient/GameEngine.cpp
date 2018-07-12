@@ -173,8 +173,8 @@ void GameEngine::bombTick() {
             if (playerBombList[j].getActived() == 1) {
                 playerBombList[j].setDelay(playerBombList[j].getDelay() - 1);
                 if (playerBombList[j].getDelay() <= 0) {
-                    (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,playerBombList[j].getX(), playerBombList[j].getY(), 0);
-                    
+                    this->bombExplosion(playerBombList[j]);
+                    (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,playerBombList[j].getX(), playerBombList[j].getY(), (int)TILES::EMPTY);
                     currentPlayer->deleteBombAt(j);
                 }
             }
@@ -185,6 +185,70 @@ void GameEngine::bombTick() {
         //    (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER3,this->bonbList[i].getX(), this->bonbList[i].getY(), 0);
             
         //}
+    }
+}
+/**
+ * x up down
+ * y left right
+ */
+void GameEngine::bombExplosion(Bomb bomb) {
+    // up
+    for (int i = 1; i <= bomb.getDistance(); i++) {
+        if (bomb.getX() - i > 0) {
+            if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX() - i, bomb.getY()) == (int)TILES::HAY) {
+                printf("%d",(levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX() - i, bomb.getY()));
+                (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER1,bomb.getX() - i, bomb.getY(), (int)TILES::EMPTY);
+                (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER2,bomb.getX() - i, bomb.getY(), (int)TILES::GROUND);
+                break;
+            } else if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX() - i, bomb.getY()) == (int)TILES::PILLAER) {
+                break;
+            }
+        } else {
+            break;
+        }
+    }
+    // down
+    for (int i = 1; i <= bomb.getDistance(); i++) {
+        if (bomb.getX() + i < (levelManager->getMap())->getSizeX() - 1) {
+            if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX() + i, bomb.getY()) == (int)TILES::HAY) {
+                printf("%d", (levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX() + i, bomb.getY())	);
+                (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER1,bomb.getX() + i, bomb.getY(), (int)TILES::EMPTY);
+                (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER2,bomb.getX() + i, bomb.getY(), (int)TILES::GROUND);
+                break;
+            } else if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX() + i, bomb.getY()) == (int)TILES::PILLAER) {
+                    break;
+            }
+        } else {
+            break;
+        }
+    }
+    // left
+    for (int i = 1; i <= bomb.getDistance(); i++) {
+        if (bomb.getY() - i > 0) {
+            if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX(), bomb.getY() - i) == (int)TILES::HAY) {
+                (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER1,bomb.getX(), bomb.getY() - i, (int)TILES::EMPTY);
+                (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER2,bomb.getX(), bomb.getY() - i, (int)TILES::GROUND);
+                break;
+            } else if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX(), bomb.getY() - i) == (int)TILES::PILLAER) {
+                break;
+            }
+        } else {
+            break;
+        }
+    }
+    // right
+    for (int i = 1; i <= bomb.getDistance(); i++) {
+        if (bomb.getY() + i < (levelManager->getMap())->getSizeY() - 1) {
+            if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX(), bomb.getY() + i) == (int)TILES::HAY) {
+                (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER1,bomb.getX(), bomb.getY() + i, (int)TILES::EMPTY);
+                (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER2,bomb.getX(), bomb.getY() + i, (int)TILES::GROUND);
+                break;
+            } else if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX(), bomb.getY() + i) == (int)TILES::PILLAER) {
+                break;
+            }
+        } else {
+            break;
+        }
     }
 }
 
