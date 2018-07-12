@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		821C2AA420CD693C0074BACE /* GameServerService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 821C2AA220CD693C0074BACE /* GameServerService.cpp */; };
+		82A54EBC20F5453D00408B1F /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82A54EBA20F5453D00408B1F /* Lobby.cpp */; };
 		82BA799E20EFD94D00328426 /* StringUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82BA799C20EFD94D00328426 /* StringUtil.cpp */; };
-		82BA79A020EFEEF800328426 /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82BA799F20EFEEF800328426 /* Lobby.cpp */; };
 		82D1D97F20B04C3C00136978 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82D1D97E20B04C3C00136978 /* ResourcePath.mm */; };
 		82D1D98220B04C3C00136978 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82D1D98120B04C3C00136978 /* main.cpp */; };
 		82D1D98520B04C3C00136978 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82D1D98420B04C3C00136978 /* cute_image.jpg */; };
@@ -32,9 +32,10 @@
 /* Begin PBXFileReference section */
 		821C2AA220CD693C0074BACE /* GameServerService.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameServerService.cpp; sourceTree = "<group>"; };
 		821C2AA320CD693C0074BACE /* GameServerService.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameServerService.hpp; sourceTree = "<group>"; };
+		82A54EBA20F5453D00408B1F /* Lobby.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lobby.cpp; sourceTree = "<group>"; };
+		82A54EBB20F5453D00408B1F /* Lobby.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lobby.hpp; sourceTree = "<group>"; };
 		82BA799C20EFD94D00328426 /* StringUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StringUtil.cpp; sourceTree = "<group>"; };
 		82BA799D20EFD94D00328426 /* StringUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StringUtil.hpp; sourceTree = "<group>"; };
-		82BA799F20EFEEF800328426 /* Lobby.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lobby.cpp; sourceTree = "<group>"; };
 		82D1D97920B04C3C00136978 /* BombermanClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BombermanClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D1D97D20B04C3C00136978 /* BombermanClient-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BombermanClient-Info.plist"; sourceTree = "<group>"; };
 		82D1D97E20B04C3C00136978 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -145,7 +146,8 @@
 				E406F99620B0A9B100633957 /* Bomb.hpp */,
 				E406F99820B0AAFD00633957 /* Player.cpp */,
 				E406F99920B0AAFD00633957 /* Player.hpp */,
-				82BA799F20EFEEF800328426 /* Lobby.cpp */,
+				82A54EBA20F5453D00408B1F /* Lobby.cpp */,
+				82A54EBB20F5453D00408B1F /* Lobby.hpp */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -338,7 +340,7 @@
 			files = (
 				821C2AA420CD693C0074BACE /* GameServerService.cpp in Sources */,
 				E46C925A20D7FC0A0021E6FB /* KeyboardController.cpp in Sources */,
-				82BA79A020EFEEF800328426 /* Lobby.cpp in Sources */,
+				82A54EBC20F5453D00408B1F /* Lobby.cpp in Sources */,
 				82BA799E20EFD94D00328426 /* StringUtil.cpp in Sources */,
 				E406F99420B0A6D700633957 /* Map.cpp in Sources */,
 				E406F99720B0A9B100633957 /* Bomb.cpp in Sources */,

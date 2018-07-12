@@ -10,6 +10,7 @@
 #define IMenu_hpp
 
 #include <stdio.h>
+#include "Lobby.hpp"
 
 using namespace std;
 
@@ -22,9 +23,18 @@ public:
     virtual void DownSelection() = 0;
     virtual void drawMenu(sf::RenderWindow &window) = 0;
     virtual int GetPressedItem() = 0;
+    virtual Lobby* getLobbies();
+    virtual void refreshMenu(Lobby *lobbies, int nbLobbies) = 0;
+    virtual int getInItemIndex() const;
+    virtual void setInItemIndex(int index);
+    virtual int getNbLobbies();
+    virtual void setNbLobbies(int nb);
     
 protected:
-    int selectedItemIndex;
+    Lobby* lobbies;
+    int nbLobbies = 0;
+    int inItemIndex = -1; // the room we are in
+    int selectedItemIndex; // the room the cursor is on
     sf::Font font;
     vector<sf::Text> menu;
 };

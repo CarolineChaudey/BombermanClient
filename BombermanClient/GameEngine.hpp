@@ -14,6 +14,8 @@
 #include "IController.hpp"
 #include "IMenu.hpp"
 #include "RoomMenu.hpp"
+#include "GameServerService.hpp"
+#include "StringUtil.hpp"
 
 
 enum class WORKFLOW {TITLESCREEN, ROOMSSCREEN, GAMESCREEN};
@@ -26,6 +28,7 @@ public:
     ~GameEngine();
     
     void launchGameEngine(sf::RenderWindow &window);
+    struct LobbyList getLobbies();
 
     
     
@@ -34,6 +37,7 @@ private:
     LevelManager* levelManager;
     IController* controller;
     WORKFLOW state;
+    GameServerService* gameServer = new GameServerService();
     
     void launchTitleScreen(sf::RenderWindow &window, IMenu* menu);
     void launchRoomScreen(sf::RenderWindow &window, IMenu* menu);
