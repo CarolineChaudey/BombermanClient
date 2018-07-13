@@ -19,6 +19,7 @@
 
 class GameServerService {
 public:
+    GameServerService();
     std::string getRooms();
     bool chooseRoom(int roomId);
 private:
