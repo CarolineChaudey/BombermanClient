@@ -104,9 +104,9 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
     {
         KEYS key = controller->manageEvent(event);
         
-        
         switch (key) {
             case KEYS::LEFT:
+                bombTick();
                 player->setDirection(DIRECTION::LEFT);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX() + 32) / 32 , (player->getPosY()-32) / 32) == (int)TILES::EMPTY
                     && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX() + 32) / 32 , (player->getPosY()-32) / 32) == (int)TILES::GROUND
@@ -115,6 +115,7 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
                 }
                 break;
             case KEYS::RIGHT:
+                bombTick();
                 player->setDirection(DIRECTION::RIGHT);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32) / 32 , (player->getPosY()+32) / 32) == (int)TILES::EMPTY
                     && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32) / 32 , (player->getPosY()+32) / 32) == (int)TILES::GROUND
@@ -123,6 +124,7 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
                 }
                 break;
             case KEYS::UP:
+                bombTick();
                 player->setDirection(DIRECTION::UP);
                 if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, (player->getPosX()+32-32) / 32 , (player->getPosY()) / 32) == (int)TILES::EMPTY
                     && (levelManager->getMap())->getElementOnMap(LAYERS::LAYER2, (player->getPosX()+32-32) / 32 , (player->getPosY()) / 32) == (int)TILES::GROUND
