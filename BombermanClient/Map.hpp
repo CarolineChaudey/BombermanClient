@@ -17,6 +17,7 @@
 #include <vector>
 #include <stdio.h>
 
+
 #include "ResourcePath.hpp"
 
 using namespace std;
@@ -27,8 +28,9 @@ enum class LAYERS { LAYER1, LAYER2, LAYER3 };
 enum class TILES { EMPTY = 0, TOP_WALL = 1, GROUND = 2, LEFT_WALL = 3,
                    RIGHT_WALL = 4, BOTTOM_WALL = 5, HAY = 6, TOP_LEFT_CORNER = 7,
                    TOP_RIGHT_CORNER = 8, BOTTOM_LEFT_CORNER = 9, BOTTOM_RIGHT_CORNER = 10,
-                   BUTTER = 11, PILLAER = 12
-};
+                   BUTTER = 11, PILLAER = 12,
+                   FIRE_V = 13, FIRE_H = 14, FIRE_UP = 15, FIRE_RIGHT = 17, FIRE_LEFT = 18, FIRE_DOWN = 18, FIRE_CENTER = 19,
+                   HAY_BROKEN = 20};
 
 class Map{
 

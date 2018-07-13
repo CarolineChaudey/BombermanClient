@@ -56,7 +56,7 @@ int main(int, char const**)
     playerOne.setSpeed(10);
     playerOne.setNumero(0);
     playerOne.setDirection(DIRECTION::DOWN);
-    playerOne.setBombsCapacity(0);
+    playerOne.setBombsCapacity(2);
     lManager.addPlayer(playerOne);
     
     

@@ -11,24 +11,31 @@
 
 Player::Player() { 
     this->numero = 0;
-    this->pv = 0;
-    this->speed = 0;
+    this->pv = 1;
+    this->speed = 1;
     this->bombs = NULL;
-    this->bombsCapacity = 0;
-    this->bombsRefreshDelay = 0;
+    this->bombsCapacity = 2;
     tileset_texture = new Texture();
     tileset = new Sprite();
+    
+    this->bombs = new Bomb[bombsCapacity];
+    for(int i = 0; i < bombsCapacity; i++){
+        this->bombs[i] = *new Bomb(1,1,3);
+    }
 }
 
 
-Player::Player(int numero, int pv, int speed, int bombsCapacity, int bombsRefreshDelay) {
+Player::Player(int numero, int pv, int speed, int bombsCapacity) {
     this->numero = numero;
     this->pv = pv;
     this->speed = speed;
     this->bombsCapacity = bombsCapacity;
-    this->bombsRefreshDelay = bombsRefreshDelay;
     
     this->bombs = new Bomb[bombsCapacity];
+    for(int i = 0; i < bombsCapacity; i++){
+        this->bombs[i] = *new Bomb(1,1,3);
+    }
+    
     tileset_texture = new Texture();
     tileset = new Sprite();
 }
@@ -57,10 +64,6 @@ int Player::getBombsCapacity() {
     return this->bombsCapacity;
 }
 
-int Player::getBombsRefreshDelay() { 
-    return this->bombsRefreshDelay;
-}
-
 void Player::setNumero(int numero) { 
     this->numero = numero;
 }
@@ -77,28 +80,25 @@ void Player::setBombs(Bomb *bombs) {
     this->bombs = bombs;
 }
 
-void Player::setBombAt(int i, Bomb bomb) { 
+void Player::setBombAt(int i, Bomb bomb) {
     this->bombs[i] = bomb;
+}
+void Player::deleteBombAt(int i) {
+    this->setBombAt(i, *new Bomb(1,1,3));
 }
 
 void Player::setBombsCapacity(int bombsCapacity) { 
     this->bombsCapacity = bombsCapacity;
 }
 
-void Player::setBombsRefreshDelay(int bombsRefreshDelay) { 
-    this->bombsRefreshDelay = bombsRefreshDelay;
-}
-
-Bomb Player::useBomb() { 
-    Bomb bombUsed = Bomb();
+bool Player::useBomb(int x, int y) {
     for(int i = 0; i < bombsCapacity; i++){
-        if(this->bombs != NULL){
-            bombUsed = this->bombs[i];
-            //Supprimer la bombe du tableau
+        if(this->bombs[i].getActived() == 0){
+            this->bombs[i].activateBomb(x, y);
+            return true;
         }
     }
-    //Lancer le timer de récuperaition
-    return bombUsed;
+    return false;
 }
 
 sf::Texture& Player::getTilesetTexture() {

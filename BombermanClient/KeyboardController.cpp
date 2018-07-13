@@ -28,6 +28,8 @@ KEYS KeyboardController::manageEvent(sf::Event event) {
                     return KEYS::ENTER;
                 case sf::Keyboard::Q:
                     return KEYS::RETURN;
+                case sf::Keyboard::B:
+                    return KEYS::BOMB;
                 default:
                     return KEYS::NOKEY;
                     
