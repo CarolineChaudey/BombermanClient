@@ -16,15 +16,8 @@ RoomMenu::RoomMenu(float width, float height, string fontname, Lobby* lobbies, i
     // la fenêtre ne s'affiche pas tant que la connexion n'est pas établie
     // TODO écran de chargement
 
-    GameServerService* serverService = new GameServerService();
-    std::string rawResults = serverService->getRooms();
-    std::vector<std::string> strRooms = split(rawResults, ';');
-    int nbRooms = (int) strRooms.size() - 1; // -1 because of the last ;
-   // Lobby* lobbies = convertToLobbies(strRooms);
-    this->menu = *new vector<sf::Text>(nbRooms);
-    this-> width = width;
+    this->width = width;
     this->height = height;
-
 
     if (!this->font.loadFromFile(fontname)) {
         cout << "Impossible de charger la font" << endl;
