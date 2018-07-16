@@ -12,7 +12,7 @@
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
 
-enum class KEYS {NOKEY, BOMB, UP, LEFT, RIGHT, DOWN, EXIT, ENTER, RETURN};
+enum class KEYS {NOKEY, BOMB, UP, LEFT, RIGHT, DOWN, BOMB2, UP2, LEFT2, RIGHT2, DOWN2, EXIT, ENTER, RETURN};
 
 class IController{
     

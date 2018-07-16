@@ -47,6 +47,7 @@ private:
     void launchRoomScreen(sf::RenderWindow &window, IMenu* menu);
     void launchGameScreen(sf::RenderWindow &window);
     void bombTick();
+    void checkBombDamage(int x, int y);
     void bombExplosion(Bomb bomb);
     
     

@@ -133,53 +133,58 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
  
     while (window.pollEvent(event))
     {
-      //  KEYS key = controller->manageEvent(event);
+      KEYS key = controller->manageEvent(event);
             
         if(player->getPv() > 0){
-            switch (event.key.code) {
-                case Keyboard::Left:
+            switch (key) {
+                case KEYS::LEFT:
                     player->setDirection(DIRECTION::LEFT);
                     checkCollide(player->getDirection(), player);
                     break;
-                case Keyboard::Right:
+                case KEYS::RIGHT:
                     player->setDirection(DIRECTION::RIGHT);
                     checkCollide(player->getDirection(), player);
                     break;
-                case Keyboard::Up:
+                case KEYS::UP:
                     player->setDirection(DIRECTION::UP);
                     checkCollide(player->getDirection(), player);
                     break;
-                case Keyboard::Down:
+                case KEYS::DOWN:
                     player->setDirection(DIRECTION::DOWN);
                     checkCollide(player->getDirection(), player);
                     break;
-                case Keyboard::Slash:
+                case KEYS::BOMB:
                     if (player->useBomb((player->getPosX() + 32) / 32, (player->getPosY()) / 32)) {
                         (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player->getPosX() + 32) / 32, (player->getPosY()) / 32, (int)TILES::BUTTER);
                     }
                     break;
-                    
-                case Keyboard::Q:
+            }
+        }
+        if(player2->getPv() > 0){
+            switch (key) {
+                
+                case KEYS::LEFT2:
                     player2->setDirection(DIRECTION::LEFT);
                     checkCollide(player2->getDirection(), player2);
                     break;
-                case Keyboard::D:
+                case KEYS::RIGHT2:
                     player2->setDirection(DIRECTION::RIGHT);
                     checkCollide(player2->getDirection(), player2);
                     break;
-                case Keyboard::Z:
+                case KEYS::UP2:
                     player2->setDirection(DIRECTION::UP);
                     checkCollide(player2->getDirection(), player2);
                     break;
-                case Keyboard::S:
+                case KEYS::DOWN2:
                     player2->setDirection(DIRECTION::DOWN);
                     checkCollide(player2->getDirection(), player2);
                     break;
-                case Keyboard::E:
+                case KEYS::BOMB2:
                     if (player2->useBomb((player2->getPosX() + 32) / 32, (player2->getPosY()) / 32)) {
                         (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player2->getPosX() + 32) / 32, (player2->getPosY()) / 32, (int)TILES::BUTTER);
                     }
                     break;
+                    
             }
         }
 
@@ -190,7 +195,7 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
         switch(event.key.code){
                 
             case sf::Event::Closed:
-                window.close();
+                //window.close();
                 break;
             case sf::Keyboard::X:
                 this->state = WORKFLOW::ROOMSSCREEN;
@@ -267,13 +272,25 @@ void GameEngine::bombTick() {
         }
     }
 }
+
+void GameEngine::checkBombDamage(int x, int y) {
+    for (int i = 0; i < (this->levelManager)->getAllPlayer().size(); i++) {
+        Player* currentPlayer = (this->levelManager)->getPlayerAt(i);
+        if ((currentPlayer->getPosX() + 32) / 32 == x && (currentPlayer->getPosY()/ 32) == y) {
+            currentPlayer->setPv(currentPlayer->getPv() - 1);
+        }
+    }
+}
 /**
  * x up down
  * y left right
  */
 void GameEngine::bombExplosion(Bomb bomb) {
+    
     // up
     for (int i = 1; i <= bomb.getDistance(); i++) {
+        checkBombDamage(bomb.getX() - i, bomb.getY());
+        
         if (bomb.getX() - i > 0) {
             if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX() - i, bomb.getY()) == (int)TILES::HAY) {
                 (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER1,bomb.getX() - i, bomb.getY(), (int)TILES::EMPTY);
@@ -288,9 +305,10 @@ void GameEngine::bombExplosion(Bomb bomb) {
     }
     // down
     for (int i = 1; i <= bomb.getDistance(); i++) {
+        checkBombDamage(bomb.getX() + i, bomb.getY());
+
         if (bomb.getX() + i < (levelManager->getMap())->getSizeX() - 1) {
             if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX() + i, bomb.getY()) == (int)TILES::HAY) {
-            
                 (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER1,bomb.getX() + i, bomb.getY(), (int)TILES::EMPTY);
                 (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER2,bomb.getX() + i, bomb.getY(), (int)TILES::GROUND);
                 break;
@@ -303,6 +321,8 @@ void GameEngine::bombExplosion(Bomb bomb) {
     }
     // left
     for (int i = 1; i <= bomb.getDistance(); i++) {
+        checkBombDamage(bomb.getX(), bomb.getY() - i);
+
         if (bomb.getY() - i > 0) {
             if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX(), bomb.getY() - i) == (int)TILES::HAY) {
                 (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER1,bomb.getX(), bomb.getY() - i, (int)TILES::EMPTY);
@@ -317,6 +337,8 @@ void GameEngine::bombExplosion(Bomb bomb) {
     }
     // right
     for (int i = 1; i <= bomb.getDistance(); i++) {
+        checkBombDamage(bomb.getX(), bomb.getY() + i);
+
         if (bomb.getY() + i < (levelManager->getMap())->getSizeY() - 1) {
             if ((levelManager->getMap())->getElementOnMap(LAYERS::LAYER1, bomb.getX(), bomb.getY() + i) == (int)TILES::HAY) {
                 (this->levelManager->getMap())->setElementOnMap(LAYERS::LAYER1,bomb.getX(), bomb.getY() + i, (int)TILES::EMPTY);
