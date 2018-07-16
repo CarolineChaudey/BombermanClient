@@ -129,6 +129,8 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
     sf::Event event;
     Player* player = this->levelManager->getPlayerAt(0);
     Player* player2 = this->levelManager->getPlayerAt(2);
+    Player* player3 = this->levelManager->getPlayerAt(3);
+    Player* player4 = this->levelManager->getPlayerAt(1);
     
  
     while (window.pollEvent(event))
@@ -140,22 +142,37 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
                 case KEYS::LEFT:
                     player->setDirection(DIRECTION::LEFT);
                     checkCollide(player->getDirection(), player);
+                    
+                    player3->setDirection(DIRECTION::LEFT);
+                    checkCollide(player->getDirection(), player3);
                     break;
                 case KEYS::RIGHT:
                     player->setDirection(DIRECTION::RIGHT);
                     checkCollide(player->getDirection(), player);
+                    
+                    player->setDirection(DIRECTION::RIGHT);
+                    checkCollide(player->getDirection(), player3);
                     break;
                 case KEYS::UP:
                     player->setDirection(DIRECTION::UP);
                     checkCollide(player->getDirection(), player);
+                    
+                    player3->setDirection(DIRECTION::UP);
+                    checkCollide(player->getDirection(), player3);
                     break;
                 case KEYS::DOWN:
                     player->setDirection(DIRECTION::DOWN);
                     checkCollide(player->getDirection(), player);
+                    
+                    player3->setDirection(DIRECTION::DOWN);
+                    checkCollide(player->getDirection(), player3);
                     break;
                 case KEYS::BOMB:
                     if (player->useBomb((player->getPosX() + 32) / 32, (player->getPosY()) / 32)) {
                         (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player->getPosX() + 32) / 32, (player->getPosY()) / 32, (int)TILES::BUTTER);
+                    }
+                    if (player3->useBomb((player3->getPosX() + 32) / 32, (player3->getPosY()) / 32)) {
+                        (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player3->getPosX() + 32) / 32, (player3->getPosY()) / 32, (int)TILES::BUTTER);
                     }
                     break;
             }
@@ -166,22 +183,38 @@ void GameEngine::launchGameScreen(sf::RenderWindow &window) {
                 case KEYS::LEFT2:
                     player2->setDirection(DIRECTION::LEFT);
                     checkCollide(player2->getDirection(), player2);
+                    
+                    player4->setDirection(DIRECTION::RIGHT);
+                    checkCollide(player4->getDirection(), player4);
                     break;
                 case KEYS::RIGHT2:
                     player2->setDirection(DIRECTION::RIGHT);
                     checkCollide(player2->getDirection(), player2);
+                    
+                    player4->setDirection(DIRECTION::LEFT);
+                    checkCollide(player4->getDirection(), player4);
                     break;
                 case KEYS::UP2:
                     player2->setDirection(DIRECTION::UP);
                     checkCollide(player2->getDirection(), player2);
+                    
+                    player4->setDirection(DIRECTION::DOWN);
+                    checkCollide(player4->getDirection(), player4);
                     break;
                 case KEYS::DOWN2:
                     player2->setDirection(DIRECTION::DOWN);
                     checkCollide(player2->getDirection(), player2);
+                    
+                    player4->setDirection(DIRECTION::UP);
+                    checkCollide(player4->getDirection(), player4);
                     break;
                 case KEYS::BOMB2:
                     if (player2->useBomb((player2->getPosX() + 32) / 32, (player2->getPosY()) / 32)) {
                         (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player2->getPosX() + 32) / 32, (player2->getPosY()) / 32, (int)TILES::BUTTER);
+                    }
+                    
+                    if (player4->useBomb((player4->getPosX() + 32) / 32, (player4->getPosY()) / 32)) {
+                        (levelManager->getMap())->setElementOnMap(LAYERS::LAYER3, (player4->getPosX() + 32) / 32, (player4->getPosY()) / 32, (int)TILES::BUTTER);
                     }
                     break;
                     
@@ -287,6 +320,7 @@ void GameEngine::checkBombDamage(int x, int y) {
  */
 void GameEngine::bombExplosion(Bomb bomb) {
     
+    checkBombDamage(bomb.getX() bomb.getY());
     // up
     for (int i = 1; i <= bomb.getDistance(); i++) {
         checkBombDamage(bomb.getX() - i, bomb.getY());
