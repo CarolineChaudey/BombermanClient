@@ -47,3 +47,40 @@ bool GameServerService::chooseRoom(int roomId) {
     }
     return true;
 }
+
+void GameServerService::checkPlayerJoin() {
+
+    //Fonction qui récupère du serveur qu'un joueur à rejoin
+    //char playersInfo[50];
+    //read(this->co_socket, playersInfo, 50);
+    
+    //cout << "Player joined " << playersInfo << endl;
+
+    //id du joueur
+
+    //Id recupéré du serveur
+  /*  int id = 0;
+    Player* playerX = new Player();
+    playerX->setTilesetTexturePath(resourcePath() + "fermie01rSpriteSheet.gif");
+    playerX->setPv(1);
+    playerX->setPosX(32);
+    playerX->setPosY(32);
+    playerX->setSpeed(10);
+    playerX->setNumero(id);
+    playerX->setDirection(DIRECTION::DOWN);
+    playerX->setBombsCapacity(2);
+    playerX->setNumero();
+    return playerX;*/
+
+    
+}
+
+sf::String GameServerService::checkServerCommand() {
+    
+   // String serverCommand = "NOP";
+    
+    //if(ser)
+    
+}
+
+

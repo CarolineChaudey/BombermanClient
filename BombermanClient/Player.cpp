@@ -141,7 +141,8 @@ int Player::getPosY() {
     return this->posY;
 }
 
-void Player::setPosX(int x) { 
+void Player::setPosX(int x) {
+    
     this->posX = x;
 }
 
@@ -156,6 +157,8 @@ DIRECTION Player::getDirection() {
 void Player::setDirection(DIRECTION direction) { 
     this->direction = direction;
 }
+
+
 
 
 

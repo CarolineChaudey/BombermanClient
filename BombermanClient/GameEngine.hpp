@@ -29,8 +29,10 @@ public:
 
     void launchGameEngine(sf::RenderWindow &window);
     struct LobbyList getLobbies();
-
+    bool isYourTurn = false;
     
+    void checkCollide(DIRECTION direction, Player* player);
+
     
     
 private:
@@ -40,13 +42,14 @@ private:
     vector <Bomb> bonbList;
     GameServerService* gameServer = new GameServerService();
 
-    
+
     void launchTitleScreen(sf::RenderWindow &window, IMenu* menu);
     void launchRoomScreen(sf::RenderWindow &window, IMenu* menu);
     void launchGameScreen(sf::RenderWindow &window);
     void bombTick();
     void bombExplosion(Bomb bomb);
-
+    
+    
     
 };
 

@@ -46,18 +46,53 @@ int main(int, char const**)
     myMap.setTilesetTexturePath(resourcePath() + "bonbeurremanTileset.png");
     
     LevelManager lManager = *new LevelManager(myMap);
-    lManager.loadMap(resourcePath() + "BonBeurreMap1.txt");
+    lManager.loadMap(resourcePath() + "testBigMap.txt");
     
     Player playerOne = *new Player();
     playerOne.setTilesetTexturePath(resourcePath() + "fermie01rSpriteSheet.gif");
     playerOne.setPv(1);
-    playerOne.setPosX(32);
+    playerOne.setPosX(0);
     playerOne.setPosY(32);
     playerOne.setSpeed(10);
     playerOne.setNumero(0);
     playerOne.setDirection(DIRECTION::DOWN);
     playerOne.setBombsCapacity(2);
+    
+    Player playerDeux = *new Player();
+    playerDeux.setTilesetTexturePath(resourcePath() + "fermie02rSpriteSheet.gif");
+    playerDeux.setPv(1);
+    playerDeux.setPosX(0);
+    playerDeux.setPosY(256);
+    playerDeux.setSpeed(10);
+    playerDeux.setNumero(1);
+    playerDeux.setDirection(DIRECTION::DOWN);
+    playerDeux.setBombsCapacity(2);
+    
+    Player playerTrois = *new Player();
+    playerTrois.setTilesetTexturePath(resourcePath() + "fermie03rSpriteSheet.gif");
+    playerTrois.setPv(1);
+    playerTrois.setPosX(224);
+    playerTrois.setPosY(32);
+    playerTrois.setSpeed(10);
+    playerTrois.setNumero(2);
+    playerTrois.setDirection(DIRECTION::DOWN);
+    playerTrois.setBombsCapacity(2);
+    
+    Player playerQuatre = *new Player();
+    playerQuatre.setTilesetTexturePath(resourcePath() + "fermie04rSpriteSheet.gif");
+    playerQuatre.setPv(1);
+    playerQuatre.setPosX(224);
+    playerQuatre.setPosY(256);
+    playerQuatre.setSpeed(10);
+    playerQuatre.setNumero(3);
+    playerQuatre.setDirection(DIRECTION::DOWN);
+    playerQuatre.setBombsCapacity(2);
+    
+    
     lManager.addPlayer(playerOne);
+   lManager.addPlayer(playerDeux);
+    lManager.addPlayer(playerTrois);
+    lManager.addPlayer(playerQuatre);
     
     
     // Create the main window

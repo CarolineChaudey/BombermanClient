@@ -19,6 +19,10 @@
 		E406F99420B0A6D700633957 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99320B0A6D700633957 /* Map.cpp */; };
 		E406F99720B0A9B100633957 /* Bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99520B0A9B100633957 /* Bomb.cpp */; };
 		E406F99A20B0AAFD00633957 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E406F99820B0AAFD00633957 /* Player.cpp */; };
+		E40BEE6620FBF87F0058CC82 /* homescreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E40BEE6520FBF87E0058CC82 /* homescreen.png */; };
+		E40BEE6820FBF8940058CC82 /* fermie04rSpriteSheet.gif in Resources */ = {isa = PBXBuildFile; fileRef = E40BEE6720FBF8940058CC82 /* fermie04rSpriteSheet.gif */; };
+		E40BEE6A20FBF89B0058CC82 /* fermie03rSpriteSheet.gif in Resources */ = {isa = PBXBuildFile; fileRef = E40BEE6920FBF89B0058CC82 /* fermie03rSpriteSheet.gif */; };
+		E40BEE6C20FBF8A20058CC82 /* fermie02rSpriteSheet.gif in Resources */ = {isa = PBXBuildFile; fileRef = E40BEE6B20FBF8A20058CC82 /* fermie02rSpriteSheet.gif */; };
 		E4168B3820EA57D6005A98EC /* fermie01rSpriteSheet.gif in Resources */ = {isa = PBXBuildFile; fileRef = E4168B3720EA57D3005A98EC /* fermie01rSpriteSheet.gif */; };
 		E423497120CE9A26005DE9FB /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E423496F20CE9A26005DE9FB /* LevelManager.cpp */; };
 		E426533C20C983E50088624E /* GameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E426533A20C983E50088624E /* GameEngine.cpp */; };
@@ -51,6 +55,10 @@
 		E406F99620B0A9B100633957 /* Bomb.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bomb.hpp; sourceTree = "<group>"; };
 		E406F99820B0AAFD00633957 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		E406F99920B0AAFD00633957 /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		E40BEE6520FBF87E0058CC82 /* homescreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homescreen.png; sourceTree = "<group>"; };
+		E40BEE6720FBF8940058CC82 /* fermie04rSpriteSheet.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fermie04rSpriteSheet.gif; sourceTree = "<group>"; };
+		E40BEE6920FBF89B0058CC82 /* fermie03rSpriteSheet.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fermie03rSpriteSheet.gif; sourceTree = "<group>"; };
+		E40BEE6B20FBF8A20058CC82 /* fermie02rSpriteSheet.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fermie02rSpriteSheet.gif; sourceTree = "<group>"; };
 		E4168B3720EA57D3005A98EC /* fermie01rSpriteSheet.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fermie01rSpriteSheet.gif; sourceTree = "<group>"; };
 		E423496F20CE9A26005DE9FB /* LevelManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LevelManager.cpp; sourceTree = "<group>"; };
 		E423497020CE9A26005DE9FB /* LevelManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LevelManager.hpp; sourceTree = "<group>"; };
@@ -133,6 +141,7 @@
 				82D1D98620B04C3C00136978 /* nice_music.ogg */,
 				82D1D98820B04C3C00136978 /* sansation.ttf */,
 				82D1D98A20B04C3C00136978 /* icon.png */,
+				E40BEE6520FBF87E0058CC82 /* homescreen.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -172,6 +181,9 @@
 		E426533020C9554B0088624E /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				E40BEE6B20FBF8A20058CC82 /* fermie02rSpriteSheet.gif */,
+				E40BEE6920FBF89B0058CC82 /* fermie03rSpriteSheet.gif */,
+				E40BEE6720FBF8940058CC82 /* fermie04rSpriteSheet.gif */,
 				E4168B3720EA57D3005A98EC /* fermie01rSpriteSheet.gif */,
 			);
 			name = Sprites;
@@ -304,11 +316,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E40BEE6C20FBF8A20058CC82 /* fermie02rSpriteSheet.gif in Resources */,
+				E40BEE6620FBF87F0058CC82 /* homescreen.png in Resources */,
 				E46C925F20D800DD0021E6FB /* testBigMap.txt in Resources */,
 				E4D0BCA420D3D20D00B26378 /* bonbeurremanTileset.png in Resources */,
+				E40BEE6A20FBF89B0058CC82 /* fermie03rSpriteSheet.gif in Resources */,
 				82D1D98B20B04C3C00136978 /* icon.png in Resources */,
 				82D1D98920B04C3C00136978 /* sansation.ttf in Resources */,
 				82D1D98720B04C3C00136978 /* nice_music.ogg in Resources */,
+				E40BEE6820FBF8940058CC82 /* fermie04rSpriteSheet.gif in Resources */,
 				82D1D98520B04C3C00136978 /* cute_image.jpg in Resources */,
 				E4D0BCA220D3CE1200B26378 /* BonBeurreMap1.txt in Resources */,
 				E4168B3820EA57D6005A98EC /* fermie01rSpriteSheet.gif in Resources */,

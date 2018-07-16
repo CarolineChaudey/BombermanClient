@@ -47,6 +47,8 @@ public:
     DIRECTION getDirection();
     
     
+    
+    
     void setNumero(int numero);
     void setPv(int pv);
     void setSpeed(int speed);
@@ -63,7 +65,10 @@ public:
     void setPosY(int y);
     void setDirection(DIRECTION direction);
     
+   
+    
 private:
+    
     string tileset_texture_path;
     string tileset_path;
     

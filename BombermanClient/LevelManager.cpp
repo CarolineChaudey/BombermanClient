@@ -92,7 +92,6 @@ void LevelManager::loadMap(string filename) {
     
     map.setStartX(stoi(MapString[0][1]));
     map.setStartY(stoi(MapString[0][2]));
-    
     changeMapSize(stoi(MapString[0][3]), stoi(MapString[0][4]));
     
     for (y = 1; y <= map.getSizeY(); y++) //On commence a 1 car la premiere ligne contient des valeur d'option
@@ -105,14 +104,12 @@ void LevelManager::loadMap(string filename) {
             map.setElementOnMap(LAYERS::LAYER1, y-1, x, stoi(MapString[y][x]));
         }
         
-        
     }
     
     for (y = 0; y < map.getSizeY(); y++)
     {
         for (x = 0; x < map.getSizeX(); x++)
         {
-            
             map.setElementOnMap(LAYERS::LAYER2, y, x, stoi(MapString[(y+1) + map.getSizeY()][x]));
         }
     }
@@ -216,10 +213,8 @@ void LevelManager::addPlayer(Player player) {
         }
         
     } else {
-        cout << "Erreur durant le chargement de l'image du player." << endl;
+       // cout << "Erreur durant le chargement de l'image du player." << endl;
     }
-
-    
     
 }
 
@@ -227,7 +222,7 @@ void LevelManager::drawPlayers(sf::RenderWindow &window) {
 
     
     for(int i = 0; i < 4; i++){
-        if(this->players[i] != NULL){
+        if(this->players[i] != NULL && this->players[i]->getPv() > 0){
             float JPosX = this->players[i]->getPosX();
             float JPosY = this->players[i]->getPosY();
             int directionValue = (int) this->players[i]->getDirection();
@@ -236,7 +231,7 @@ void LevelManager::drawPlayers(sf::RenderWindow &window) {
             int tilePos = directionValue+(28*timer);
             
             players[i]->getTileset().setPosition(JPosY, JPosX);
-            cout << tilePos << endl;
+           
             players[i]->getTileset().setTextureRect(sf::IntRect(tilePos, 0, 28, 47));
             window.draw(players[i]->getTileset());
         }
@@ -257,7 +252,6 @@ vector<Player*> LevelManager::getAllPlayer() {
         }
     }
     return listPlayer;
-    
     
 }
 

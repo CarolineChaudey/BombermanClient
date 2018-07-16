@@ -10,12 +10,42 @@
 #include "GameServerService.hpp"
 #include "StringUtil.hpp"
 #include <string>
+#include "ResourcePath.hpp"
 
-
-RoomMenu::RoomMenu(float width, float height, string fontname, Lobby* lobbies, int nbLobbies) {
+RoomMenu::RoomMenu(float width, float height, int nb_room, string fontname){
+    
+    if (background.loadFromFile(resourcePath() + "homescreen.png"))
+    {
+        sbackground.setTexture(background);
+    
+        this->menu = *new vector<sf::Text>(nb_room);
+    
+    
+    
+        if (!this->font.loadFromFile(fontname)) {
+                cout << "Impossible de charger la font" << endl;
+        
+            }
+    
+        for(int i = 0; i < nb_room; i++){
+                this->menu[i].setString("Room : " + std::to_string(i));
+                this->menu[i].setFont(this->font);
+                this->menu[i].setCharacterSize(50);
+                this->menu[i].setFillColor(sf::Color::White);
+                this->menu[i].setPosition(width / 3, height / (menu.size() + 1) * (i+1));
+            }
+        this->menu[0].setFillColor(sf::Color::Red);
+        selectedItemIndex = 0;
+    }else{
+        cout << "Erreur durant le chargement de l'image du background." << endl;
+    }
+    
+    
+    
+}
+/*RoomMenu::RoomMenu(float width, float height, string fontname, Lobby* lobbies, int nbLobbies) {
     // la fenêtre ne s'affiche pas tant que la connexion n'est pas établie
     // TODO écran de chargement
-
     this->width = width;
     this->height = height;
 
@@ -31,7 +61,7 @@ RoomMenu::RoomMenu(float width, float height, string fontname, Lobby* lobbies, i
         buildMenu(nbLobbies);
     }
 }
-
+*/
 RoomMenu::~RoomMenu() noexcept {
     
 }
@@ -68,25 +98,18 @@ void RoomMenu::refreshMenu(Lobby *lobbies, int nbLobbies) {
 
 void RoomMenu::UpSelection(){
     if(this->selectedItemIndex > 0){
-        if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
             this->menu[selectedItemIndex].setFillColor(sf::Color::White);
-        }
-        this->selectedItemIndex--;
-        if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
+            this->selectedItemIndex--;
             this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
-        }
+    
     }
 }
 
 void RoomMenu::DownSelection(){
-    if((this->selectedItemIndex + 1) < IMenu::getNbLobbies()){
-        if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
+    if(this->selectedItemIndex < this->menu.size()-1){
             this->menu[selectedItemIndex].setFillColor(sf::Color::White);
-        }
-        this->selectedItemIndex++;
-        if (!isCurrentLobby(selectedItemIndex)) { // priority on showing it is the room we are currently waiting in
+            this->selectedItemIndex++;
             this->menu[selectedItemIndex].setFillColor(sf::Color::Red);
-        }
     }
 }
 
@@ -95,8 +118,10 @@ bool RoomMenu::isCurrentLobby(int index) {
 }
 
 void RoomMenu::drawMenu(sf::RenderWindow &window) {
+    window.draw(this->sbackground);
     for (int i = 0; i < this->menu.size(); i++)
     {
+        
         window.draw(this->menu[i]);
     }
 }

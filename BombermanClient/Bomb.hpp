@@ -19,21 +19,18 @@ public:
     Bomb(int distance, int degats, int delay);
     
     int getDistance();
-    int getDegats();
     int getDelay();
     int getActived();
     int getX();
     int getY();
     
     void setDistance(int d);
-    void setDegats(int d);
     void setDelay(int d);
     
     void activateBomb(int x, int y);
 private:
     int actived;
     int distance;
-    int degats;
     int delay;
     int x;
     int y;

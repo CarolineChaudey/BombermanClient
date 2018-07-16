@@ -19,8 +19,8 @@ using namespace std;
 class RoomMenu : public IMenu {
     
 public:
-    //RoomMenu(float width, float height, string fontname);
-    RoomMenu(float width, float height, string fontname, Lobby* lobbies = nullptr, int nbLobbies = 0);
+    RoomMenu(float width, float height, int nb_room, string fontname);
+  //  RoomMenu(float width, float height, string fontname, Lobby* lobbies = nullptr, int nbLobbies = 0);
     ~RoomMenu();
     
      void buildMenu(int nbLobbies);
@@ -31,6 +31,8 @@ public:
      void refreshMenu(Lobby *lobbies, int nbLobbies);
 
 private:
+    sf::Texture background;
+    sf::Sprite sbackground;
     bool isCurrentLobby(int index);
     
     float width;

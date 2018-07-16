@@ -26,7 +26,7 @@ KEYS KeyboardController::manageEvent(sf::Event event) {
                 //case sf::Keyboard::Enter:
                 case sf::Keyboard::Space:
                     return KEYS::ENTER;
-                case sf::Keyboard::Q:
+                case sf::Keyboard::Return:
                     return KEYS::RETURN;
                 case sf::Keyboard::B:
                     return KEYS::BOMB;

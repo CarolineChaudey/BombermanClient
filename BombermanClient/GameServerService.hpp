@@ -16,12 +16,18 @@
 #include <string>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include "Player.hpp"
+
 
 class GameServerService {
 public:
     GameServerService();
     std::string getRooms();
     bool chooseRoom(int roomId);
+    void checkPlayerJoin();
+    String checkServerCommand();
+    
+    
 private:
     char serverAddr[15] = "127.0.0.1";
     int serverPort = 8081;
